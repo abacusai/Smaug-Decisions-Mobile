@@ -1,0 +1,9 @@
+Cascade.xcodeproj/
+Frameworks/
+build/
+Cascade/Info.plist
+Cascade/Cascade.entitlements
+Cascade/Resources/*.mlpackage
+Cascade/Resources/embed_tokens_fp16.bin
+Cascade/Resources/embed_tokens_int8*.bin
+Cascade/Resources/head.json

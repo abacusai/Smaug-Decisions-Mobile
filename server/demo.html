@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Decisions demo</title>
+<style>
+:root{--bg:#f4f5f7;--fg:#161b22;--mut:#667085;--line:#d9dee6;--card:#fff;--acc:#0f766e;--acc-soft:#d9f0ec;--ok:#15803d;--warn:#b45309;--bad:#b91c1c}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f141b;--fg:#e6eaf0;--mut:#98a2b3;--line:#2a3340;--card:#161c25;--acc:#2dd4bf;--acc-soft:#113b37;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171}}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:12px 16px calc(32px + env(safe-area-inset-bottom,0px))}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:8px 0 4px}h1{font-size:18px;margin:0}
+.muted{color:var(--mut);font-size:13px}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0 14px}
+.tabs button{padding:10px 4px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);font:inherit;font-size:13px}
+.tabs button[aria-selected=true]{background:var(--acc);border-color:var(--acc);color:#fff}
+section[hidden]{display:none}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:10px}
+button.primary{width:100%;padding:14px;border:0;border-radius:10px;background:var(--acc);color:#fff;font:inherit;font-size:17px;font-weight:600}
+button.primary.stop{background:var(--bad)}button.primary:disabled{opacity:.5}
+button.ghost{padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg);font:inherit}
+.big{font-size:44px;font-weight:700;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}.ok{color:var(--ok)}.warn{color:var(--warn)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:4px 0 2px}.bar>i{display:block;height:100%;background:var(--acc)}
+label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}input[type=text],textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg);font:inherit}
+input[type=range]{width:100%}.answer{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}.answer b{font-size:15px}
+.opt{display:flex;justify-content:space-between;font-size:14px;margin-top:6px}.opt span:last-child{font-variant-numeric:tabular-nums;color:var(--mut)}
+.pill{display:inline-block;font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}td{padding:5px 4px;border-bottom:1px solid var(--line)}
+img.prev{max-width:100%;max-height:240px;border-radius:8px;border:1px solid var(--line);display:block;margin-top:8px}
+.foot{margin-top:18px;font-size:12px;color:var(--mut)}
+</style></head><body><main>
+<header><h1>Decisions demo</h1><span class="muted" id="model">connecting…</span></header>
+<div class="muted">One small model, one question shape: a clip, a screen or a message in; a probability per option out. No text is generated.</div>
+<div class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="turn">Turn gate</button><button role="tab" data-tab="room">Room</button><button role="tab" data-tab="screen">Screen</button><button role="tab" data-tab="text">Text</button>
+</div>
+
+<section id="tab-turn" class="tab">
+  <div class="card">
+    <div class="muted">Talk to it. Every time you pause it asks the model one question, in the wording it knows best: <em>has the person completed their speaking turn?</em> Above the threshold a voice agent would answer now instead of waiting a fixed half second.</div>
+    <button class="primary" id="live" style="margin-top:12px">Start listening</button>
+    <div class="grid2" style="margin-top:14px"><div><div class="muted">P(turn complete)</div><div class="big" id="pfin">–</div></div><div><div class="muted">verdict</div><div class="big" id="verdict">–</div></div></div>
+    <div class="bar"><i id="pbar" style="width:0%"></i></div>
+    <div class="row muted" style="justify-content:space-between"><span id="liveState">idle</span><span id="lat"></span></div>
+    <label>threshold τ <b id="tauV">0.80</b></label><input id="tau" type="range" min="0.5" max="0.98" step="0.01" value="0.8">
+    <table><tbody id="log"></tbody></table>
+  </div>
+</section>
+
+<section id="tab-room" class="tab" hidden>
+  <div class="card">
+    <div class="muted">Six seconds of whatever is around you. Five questions in one request: who is talking, how many, is there music, what is the sound.</div>
+    <button class="primary" id="roomBtn" style="margin-top:12px">Listen for 6 s</button>
+    <div class="muted" id="roomInfo" style="margin-top:8px"></div>
+    <div id="roomAns"></div>
+  </div>
+</section>
+
+<section id="tab-screen" class="tab" hidden>
+  <div class="card">
+    <div class="muted">A screenshot or a photo. The model answers from pixels: what is wrong with the photo, is a person in it, and whether a goal you type has been reached on this screen.</div>
+    <div class="row" style="margin-top:12px"><label class="ghost" style="margin:0;cursor:pointer">Choose image<input id="img" type="file" accept="image/*" style="display:none"></label><span class="muted" id="imgInfo">no image</span></div>
+    <img class="prev" id="prev" alt="" hidden>
+    <label>Goal to check on this screen (optional)</label><input type="text" id="goal" placeholder="e.g. I wanted to add the item to my cart">
+    <button class="primary" id="screenBtn" style="margin-top:12px">Ask</button>
+    <div class="muted" id="screenInfo" style="margin-top:8px"></div>
+    <div id="screenAns"></div>
+  </div>
+</section>
+
+<section id="tab-text" class="tab" hidden>
+  <div class="card">
+    <div class="muted">Plain routing: a message in, a probability per route out, in about 70 ms. Edit the routes to match any product.</div>
+    <label>Message</label><textarea id="msg" rows="3">Can you book me a table for two at seven tonight?</textarea>
+    <label>Routes (comma separated)</label><input type="text" id="routes" value="book a reservation, check the weather, set a reminder, play music, general chat">
+    <button class="primary" id="textBtn" style="margin-top:12px">Route it</button>
+    <div class="muted" id="textInfo" style="margin-top:8px"></div>
+    <div id="textAns"></div>
+  </div>
+</section>
+
+<div class="foot">Served by the Smaug-Decisions reference server. Audio leaves your phone only for the request; the reference server does not store it.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);const SR=16000;
+// key: from #key=… in the link (never sent to the server as part of the URL), remembered for this tab
+let KEY='';try{const m=location.hash.match(/key=([A-Za-z0-9]+)/);if(m){KEY=m[1];sessionStorage.setItem('k',KEY);history.replaceState(null,'',location.pathname)}else KEY=sessionStorage.getItem('k')||''}catch(e){}
+fetch('/health').then(r=>r.json()).then(j=>$('model').textContent=j.model.replace('google/','')).catch(()=>$('model').textContent='server unreachable');
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));document.querySelectorAll('.tab').forEach(s=>s.hidden=s.id!=='tab-'+b.dataset.tab)});
+function wav(f32){const n=f32.length,b=new ArrayBuffer(44+n*2),v=new DataView(b);const w=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
+w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,SR,true);v.setUint32(28,SR*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
+for(let i=0;i<n;i++){const s=Math.max(-1,Math.min(1,f32[i]));v.setInt16(44+i*2,s<0?s*32768:s*32767,true)}return new Uint8Array(b)}
+const b64=u8=>{let s='';for(let i=0;i<u8.length;i+=0x8000)s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000));return btoa(s)};
+function to16k(x,sr){if(sr===SR)return x;const r=sr/SR,n=Math.floor(x.length/r),o=new Float32Array(n);for(let i=0;i<n;i++){const a=i*r,j=Math.floor(a),t=a-j;o[i]=x[j]*(1-t)+(x[Math.min(j+1,x.length-1)]*t)}return o}
+async function decide(content,questions,rules){const msgs=[];if(rules)msgs.push({role:'developer',content:rules});msgs.push({role:'user',content});
+const t0=performance.now();const r=await fetch('/v1/decisions',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+KEY},body:JSON.stringify({input:msgs,questions})});
+const j=await r.json();if(!r.ok)throw new Error(j.error?j.error.message:r.status);j.client_ms=Math.round(performance.now()-t0);return j}
+const audioContent=f32=>[{type:'input_audio',input_audio:{data:b64(wav(f32)),format:'wav'}}];
+function render(el,j){el.innerHTML=j.answers.map(a=>{if(a.type==='refusal')return `<div class="answer"><b>${a.name}</b> · refused: ${a.reason}</div>`;
+if(a.type==='predicate')return `<div class="answer"><b>${a.name}</b> · P(true) ${a.probability.toFixed(2)}<div class="bar"><i style="width:${100*a.probability}%"></i></div></div>`;
+const top=a.type==='choice'?`<b>${a.choice}</b> <span class="pill">${(100*Math.max(...a.probabilities.map(p=>p.probability))).toFixed(0)}%</span>`:a.type==='score'?`<b>${a.score.toFixed(2)}</b>`:`<b>${a.selected.join(', ')||'none'}</b>`;
+return `<div class="answer"><div class="row" style="justify-content:space-between"><span>${a.name}</span>${top}</div>`+a.probabilities.slice().sort((x,y)=>y.probability-x.probability).slice(0,6).map(p=>`<div class="opt"><span>${p.label||p.value}</span><span>${p.probability.toFixed(2)}</span></div><div class="bar"><i style="width:${100*p.probability}%"></i></div>`).join('')+'</div>'}).join('')}
+// ---- turn gate: mic -> ring buffer (device rate), energy VAD, the turn-completion question at every pause
+const TURN_Q=[{name:'turn complete?',type:'choice',instructions:'At the end of this audio, has the person completed their speaking turn?',choices:[{value:'incomplete',description:'The speaker has not completed their turn; wait for them to continue'},{value:'complete',description:'The speaker has completed their turn; a response can naturally begin'}]}];
+let ctx,src,proc,stream,ring,ringPos=0,filled=0,speaking=false,lastVoice=0,lastDec=0,live=false,t0=0,busy=false,devSR=SR;
+function lastSeconds(s){const n=Math.min(filled,Math.floor(s*devSR)),out=new Float32Array(n);for(let i=0;i<n;i++)out[i]=ring[(ringPos-n+i+ring.length)%ring.length];return to16k(out,devSR)}
+$('tau').oninput=()=>$('tauV').textContent=(+$('tau').value).toFixed(2);
+async function onPause(){if(busy)return;busy=true;const clip=lastSeconds(8);try{const j=await decide(audioContent(clip),TURN_Q,null);const p=j.answers[0].probabilities.find(x=>x.value==='complete').probability,tau=+$('tau').value,go=p>=tau;
+$('pfin').textContent=p.toFixed(2);$('pbar').style.width=(100*p)+'%';$('verdict').textContent=go?'answer now':'wait';$('verdict').className='big '+(go?'ok':'warn');$('lat').textContent=j.client_ms+' ms';
+const tr=document.createElement('tr');tr.innerHTML=`<td>${((performance.now()-t0)/1000).toFixed(1)} s</td><td>${(clip.length/SR).toFixed(1)} s clip</td><td>${p.toFixed(2)}</td><td class="${go?'ok':'warn'}">${go?'answer now':'wait'}</td><td>${j.client_ms} ms</td>`;$('log').prepend(tr);while($('log').children.length>12)$('log').lastChild.remove()}
+catch(e){$('liveState').textContent='error: '+e.message}busy=false}
+async function openMic(){stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true}});ctx=new (window.AudioContext||window.webkitAudioContext)();await ctx.resume();devSR=ctx.sampleRate;src=ctx.createMediaStreamSource(stream);proc=ctx.createScriptProcessor(2048,1,1);src.connect(proc);proc.connect(ctx.destination)}
+function closeMic(){try{proc&&proc.disconnect();src&&src.disconnect();stream&&stream.getTracks().forEach(t=>t.stop());ctx&&ctx.close()}catch(e){}}
+$('live').onclick=async()=>{if(live){live=false;closeMic();$('live').textContent='Start listening';$('live').classList.remove('stop');$('liveState').textContent='idle';return}
+try{await openMic()}catch(e){$('liveState').textContent='microphone blocked: '+e.message;return}
+ring=new Float32Array(devSR*10);ringPos=0;filled=0;live=true;t0=performance.now();$('live').textContent='Stop';$('live').classList.add('stop');$('liveState').textContent='listening';
+proc.onaudioprocess=e=>{const x=e.inputBuffer.getChannelData(0);let en=0;for(let i=0;i<x.length;i++){ring[ringPos]=x[i];ringPos=(ringPos+1)%ring.length;en+=x[i]*x[i]}filled=Math.min(filled+x.length,ring.length);
+const now=performance.now(),rms=Math.sqrt(en/x.length);if(rms>0.015){speaking=true;lastVoice=now;$('liveState').textContent='speech'}
+else if(speaking&&now-lastVoice>350){speaking=false;$('liveState').textContent='pause → deciding';if(now-lastDec>400){lastDec=now;onPause()}}}};
+// ---- room awareness: 6 s clip, five questions
+const ROOM_Q=[
+ {name:'anyone talking?',type:'choice',instructions:'Is anyone talking in this clip?',choices:[{value:'Yes'},{value:'No'}]},
+ {name:'how many people speaking',type:'choice',instructions:'How many distinct people are audibly speaking anywhere in this audio window? Count each person once, including people who spoke earlier but are silent at the end.',choices:['0','1','2','3','4'].map(n=>({value:n,description:`Exactly ${n} distinct people speak within the audio window`}))},
+ {name:'someone singing?',type:'choice',instructions:'Is someone singing in this track?',choices:[{value:'Yes'},{value:'No'}]},
+ {name:'what is making this sound',type:'choice',instructions:'What is making this sound?',choices:['Speech','Music','Computer keyboard','Traffic','Dog','Siren','Applause','Water','Silence'].map(v=>({value:v}))},
+ {name:'genre (if music)',type:'choice',instructions:'What genre is this music?',choices:['pop','rock','hip-hop','electronic','classical','jazz','not music'].map(v=>({value:v}))}];
+async function record(seconds,info){await openMic();const chunks=[];proc.onaudioprocess=e=>chunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));let left=seconds;info.textContent=`listening… ${left}`;const iv=setInterval(()=>{left--;info.textContent=`listening… ${left}`},1000);
+await new Promise(r=>setTimeout(r,seconds*1000));clearInterval(iv);closeMic();const n=chunks.reduce((a,b)=>a+b.length,0),f=new Float32Array(n);let o=0;for(const c of chunks){f.set(c,o);o+=c.length}return to16k(f,devSR)}
+$('roomBtn').onclick=async()=>{$('roomBtn').disabled=true;try{const clip=await record(6,$('roomInfo'));$('roomInfo').textContent='asking…';const j=await decide(audioContent(clip),ROOM_Q,null);$('roomInfo').textContent=`${(clip.length/SR).toFixed(1)} s of audio · ${j.client_ms} ms round trip · 5 questions in one pass`;render($('roomAns'),j)}catch(e){$('roomInfo').textContent='error: '+e.message}$('roomBtn').disabled=false};
+// ---- screen: image -> data URL (downscaled), photo/screen questions + optional goal
+let imgURL=null;$('img').onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image();im.onload=()=>{const s=Math.min(1,1024/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);imgURL=c.toDataURL('image/jpeg',0.85);$('prev').src=imgURL;$('prev').hidden=false;$('imgInfo').textContent=`${c.width}×${c.height}`};im.src=URL.createObjectURL(f)};
+$('screenBtn').onclick=async()=>{if(!imgURL){$('screenInfo').textContent='choose an image first';return}const qs=[
+ {name:'photo quality',type:'choice',instructions:'What is wrong with this photo, if anything?',choices:['looks fine','blurry','too dark','overexposed','sideways or upside down','heavily compressed'].map(v=>({value:v}))},
+ {name:'person in it?',type:'choice',instructions:'Does this image show a person?',choices:[{value:'Yes'},{value:'No'}]}];
+const goal=$('goal').value.trim();if(goal)qs.push({name:'goal reached?',type:'choice',instructions:`Goal: ${goal}. Has the goal been reached?`,choices:[{value:'Yes'},{value:'No'}]});
+$('screenInfo').textContent='asking…';try{const j=await decide([{type:'input_image',image_url:imgURL}],qs,null);$('screenInfo').textContent=`${j.client_ms} ms round trip`;render($('screenAns'),j)}catch(e){$('screenInfo').textContent='error: '+e.message}};
+// ---- text routing
+$('textBtn').onclick=async()=>{const routes=$('routes').value.split(',').map(s=>s.trim()).filter(Boolean);$('textInfo').textContent='asking…';
+try{const j=await decide($('msg').value,[{name:'route',type:'choice',instructions:'Which request is this message making?',choices:routes.map(v=>({value:v}))}],null);$('textInfo').textContent=`${j.client_ms} ms round trip`;render($('textAns'),j)}catch(e){$('textInfo').textContent='error: '+e.message}};
+</script></body></html>

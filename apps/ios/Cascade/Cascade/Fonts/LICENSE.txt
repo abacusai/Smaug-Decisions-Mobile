@@ -1,0 +1,1 @@
+Inter (Inter_18pt-*.ttf), copyright the Inter Project Authors (https://github.com/rsms/inter), licensed under the SIL Open Font License 1.1 (https://openfontlicense.org). Copied from the ChatLLM iOS app, whose type system this app follows.

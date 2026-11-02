@@ -1,0 +1,422 @@
+[
+ {
+  "s": "",
+  "n": 0,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 1,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 2,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 3,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 4,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 5,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 9,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 10,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 33,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 100,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 200,
+  "out": ""
+ },
+ {
+  "s": "",
+  "n": 1000,
+  "out": ""
+ },
+ {
+  "s": "a",
+  "n": 0,
+  "out": " ... a"
+ },
+ {
+  "s": "a",
+  "n": 1,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 2,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 3,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 4,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 5,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 9,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 10,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 33,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 100,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 200,
+  "out": "a"
+ },
+ {
+  "s": "a",
+  "n": 1000,
+  "out": "a"
+ },
+ {
+  "s": "abcdef",
+  "n": 0,
+  "out": " ... abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 1,
+  "out": " ... abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 2,
+  "out": "a ... abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 3,
+  "out": "ab ... abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 4,
+  "out": "ab ... f"
+ },
+ {
+  "s": "abcdef",
+  "n": 5,
+  "out": "abc ... f"
+ },
+ {
+  "s": "abcdef",
+  "n": 9,
+  "out": "abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 10,
+  "out": "abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 33,
+  "out": "abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 100,
+  "out": "abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 200,
+  "out": "abcdef"
+ },
+ {
+  "s": "abcdef",
+  "n": 1000,
+  "out": "abcdef"
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 0,
+  "out": " ... The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 1,
+  "out": " ... The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 2,
+  "out": "T ... The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 3,
+  "out": "Th ... The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 4,
+  "out": "Th ...  "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 5,
+  "out": "The ...  "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 9,
+  "out": "The qu ... . "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 10,
+  "out": "The qui ... g. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 33,
+  "out": "The quick brown fox jum ... azy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 100,
+  "out": "The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 200,
+  "out": "The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. ",
+  "n": 1000,
+  "out": "The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 0,
+  "out": " ... Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 1,
+  "out": " ... Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 2,
+  "out": "Ü ... Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 3,
+  "out": "Ün ... Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 4,
+  "out": "Ün ...  "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 5,
+  "out": "Ünï ...  "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 9,
+  "out": "Ünïcöd ... . "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 10,
+  "out": "Ünïcödé ... ∞. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 33,
+  "out": "Ünïcödé façade — naïve  ... math ∑∞. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 100,
+  "out": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 200,
+  "out": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. "
+ },
+ {
+  "s": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. ",
+  "n": 1000,
+  "out": "Ünïcödé façade — naïve café, 日本語のテキスト, emoji 😀🎉👍🏽, combining é, RTL שלום, math ∑∞. "
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 0,
+  "out": " ... 😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 1,
+  "out": " ... 😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 2,
+  "out": "😀 ... 😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 3,
+  "out": "😀🎉 ... 😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 4,
+  "out": "😀🎉 ... 🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 5,
+  "out": "😀🎉👍 ... 🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 9,
+  "out": "😀🎉👍🏽😀🎉 ... 👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 10,
+  "out": "😀🎉👍🏽😀🎉👍 ... 🎉👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 33,
+  "out": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 100,
+  "out": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 200,
+  "out": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽"
+ },
+ {
+  "s": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽",
+  "n": 1000,
+  "out": "😀🎉👍🏽😀🎉👍🏽😀🎉👍🏽"
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 0,
+  "out": " ... The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 1,
+  "out": " ... The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 2,
+  "out": "T ... The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 3,
+  "out": "Th ... The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 4,
+  "out": "Th ...  "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 5,
+  "out": "The ...  "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 9,
+  "out": "The qu ... . "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 10,
+  "out": "The qui ... g. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 33,
+  "out": "The quick brown fox jum ... azy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 100,
+  "out": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps ...  fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 200,
+  "out": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The q ...  the lazy dog. The quick brown fox jumps over the lazy dog. "
+ },
+ {
+  "s": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "n": 1000,
+  "out": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+ }
+]

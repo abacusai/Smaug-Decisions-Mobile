@@ -1,0 +1,57 @@
+diff --git a/c/BUILD b/c/BUILD
+index 5cbbe40..d46fbb7 100644
+--- a/c/BUILD
++++ b/c/BUILD
+@@ -396,6 +396,9 @@ cc_library(
+     visibility = ["//visibility:public"],
+     deps = ENGINE_COMMON_DEPS + [
+         "//runtime/engine:engine_impl_selected",
++        "//runtime/components:scoring_cpu_util",
++        "//runtime/conversation/model_data_processor:model_data_processor",
++        "//runtime/conversation/model_data_processor:model_data_processor_factory",
+     ],
+     alwayslink = True,
+ )
+@@ -424,6 +427,9 @@ cc_library(
+     visibility = ["//visibility:public"],
+     deps = ENGINE_COMMON_DEPS + [
+         "//runtime/engine:engine_impl_cpu_only_selected",
++        "//runtime/components:scoring_cpu_util",
++        "//runtime/conversation/model_data_processor:model_data_processor",
++        "//runtime/conversation/model_data_processor:model_data_processor_factory",
+     ],
+     alwayslink = True,
+ )
+diff --git a/c/experimental.h b/c/experimental.h
+index 6196095..de70a30 100644
+--- a/c/experimental.h
++++ b/c/experimental.h
+@@ -160,6 +160,28 @@ LITERT_LM_C_API_EXPORT
+ LiteRtLmStatusCode litert_lm_experimental_session_debug_info_get_capture_dir(
+     const LiteRtLmSessionDebugInfo* debug_info, const char** out_capture_dir);
+ 
++// [harness patch] Letter-probability scoring (defined in c/conversation.cc).
++// Prefills `rendered_prompt` (no chat template; the session adds BOS) into a
++// raw session; <|image|> / <|audio|> placeholders are expanded by the model's
++// data processor from `media_json`, a JSON array of
++// {"type": "image"|"audio", "path": "..."} in prompt order ("" or "[]" for
++// text). visual_token_budget <= 0 keeps the model default.
++#define LITERT_LM_HARNESS_PATCH 1
++LITERT_LM_C_API_EXPORT
++LiteRtLmStatusCode litert_lm_experimental_session_run_prefill_multimodal(
++    LiteRtLmSession* session, LiteRtLmEngine* engine,
++    const char* rendered_prompt, const char* media_json,
++    int visual_token_budget);
++
++// [harness patch] Raw next-token logits of the most recent text-scoring step
++// (process-global: call right after litert_lm_session_run_text_scoring, one
++// scoring at a time). out_logits[i] = logits[ids[i]]; the other outputs are
++// optional (may be NULL).
++LITERT_LM_C_API_EXPORT
++LiteRtLmStatusCode litert_lm_experimental_get_last_scoring_logits(
++    const int* ids, size_t num_ids, float* out_logits, float* out_logsumexp,
++    float* out_max_logit, int* out_vocab_size);
++
+ #ifdef __cplusplus
+ }  // extern "C"
+ #endif

@@ -1,0 +1,11 @@
+{
+ "version": 1,
+ "base_url": "https://huggingface.co/",
+ "url_overrides": {"download_test.bin": "https://huggingface.co/sentence-transformers/all-mpnet-base-v2/resolve/main/model.safetensors"},
+ "variants": [
+  {"variant": "full_vis560", "file": "download_test.bin", "bytes": 437971872,
+   "sha256": "78c0197b6159d92658e319bc1d72e4c73a9a03dd03815e70e555c5ef05615658", "modalities": ["text", "image", "audio"], "vision_tokens": 560},
+  {"variant": "full_vis280", "file": "download_test.bin", "bytes": 437971872,
+   "sha256": "78c0197b6159d92658e319bc1d72e4c73a9a03dd03815e70e555c5ef05615658", "modalities": ["text", "image", "audio"], "vision_tokens": 280}
+ ]
+}

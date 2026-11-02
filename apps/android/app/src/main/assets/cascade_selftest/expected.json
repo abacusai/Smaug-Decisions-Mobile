@@ -1,0 +1,2021 @@
+{
+ "tau": 0.9,
+ "gguf": "smaug-decisions-Q4_K_M-imat.gguf",
+ "mmproj": "mmproj-smaug-decisions-q8_0.gguf",
+ "onnx": "onnx_mixed",
+ "b": 8.010554313659668,
+ "threads": 4,
+ "dec_no_repack": "1",
+ "requests": [
+  {
+   "id": "ask_station:turn_complete",
+   "kind": "audio",
+   "scenario": "turn_complete",
+   "input": "ask_station.wav",
+   "p_torch": [
+    0.295705109834671,
+    0.7042948603630066
+   ],
+   "p_onnx": [
+    0.30634274598483135,
+    0.6936572540151686
+   ],
+   "conf_torch": 0.7042948813526297,
+   "conf_onnx": 0.6936572540151686,
+   "fast_tokens": 166,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.059532255054542314,
+    0.9404677449454577
+   ],
+   "z_big": [
+    26.157630920410156,
+    28.917490005493164
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 209,
+   "ms_big_py": 49606.374740600586,
+   "p_big_litert": [
+    0.07341951102451343,
+    0.9265804889754865
+   ],
+   "z_big_litert": [
+    26.485474555150418,
+    29.02078575326414
+   ],
+   "positions_big_litert": 209,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "ask_station:speaker_count",
+   "kind": "audio",
+   "scenario": "speaker_count",
+   "input": "ask_station.wav",
+   "p_torch": [
+    0.07794108241796494,
+    0.334207683801651,
+    0.38192519545555115,
+    0.1276681125164032,
+    0.07825786620378494
+   ],
+   "p_onnx": [
+    0.07878199049661347,
+    0.3407239793731031,
+    0.37630700789503657,
+    0.12507674437197583,
+    0.07911027786327114
+   ],
+   "conf_torch": 0.3819252182200681,
+   "conf_onnx": 0.37630700789503646,
+   "fast_tokens": 149,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.003408263782206637,
+    0.9088781881420457,
+    0.08066275551370274,
+    0.006564827994461838,
+    0.00048596456758322957
+   ],
+   "z_big": [
+    23.35747718811035,
+    28.943485260009766,
+    26.52155113220215,
+    24.01300048828125,
+    21.40965461730957
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 195,
+   "ms_big_py": 17635.45536994934,
+   "p_big_litert": [
+    0.0021993244305499858,
+    0.7841722270589458,
+    0.17205046019928874,
+    0.03345627701224379,
+    0.008121711298971646
+   ],
+   "z_big_litert": [
+    22.972624348647567,
+    28.849102786059806,
+    27.33226191950345,
+    25.694713535013125,
+    24.27901499553741
+   ],
+   "positions_big_litert": 195,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "ask_station:music_genre",
+   "kind": "audio",
+   "scenario": "music_genre",
+   "input": "ask_station.wav",
+   "p_torch": [
+    0.033291805535554886,
+    0.09783947467803955,
+    0.38273659348487854,
+    0.2075597643852234,
+    0.004052750766277313,
+    0.008636820130050182,
+    0.006124173756688833,
+    0.2597586512565613
+   ],
+   "p_onnx": [
+    0.03317543517866498,
+    0.09830687637182815,
+    0.3743622115941794,
+    0.20922338381472863,
+    0.004172895616286778,
+    0.008925273591095668,
+    0.006185247495559046,
+    0.2656486763376573
+   ],
+   "conf_torch": 0.3827365804744091,
+   "conf_onnx": 0.3743622115941794,
+   "fast_tokens": 162,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.013934623802730133,
+    0.04600897927894102,
+    0.2586035211194768,
+    0.059628688628741225,
+    0.0024624095221832494,
+    0.005453017022700278,
+    0.0018266503641296329,
+    0.6120821102610976
+   ],
+   "z_big": [
+    25.345609664916992,
+    26.540069580078125,
+    28.266529083251953,
+    26.79936981201172,
+    23.61237335205078,
+    24.40740203857422,
+    23.313716888427734,
+    29.12809944152832
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 211,
+   "ms_big_py": 16568.46284866333,
+   "p_big_litert": [
+    0.034593469301384266,
+    0.06577437820605977,
+    0.07486935243986655,
+    0.04661300977942117,
+    0.005878072222045549,
+    0.025527014641126583,
+    0.0033584233833426134,
+    0.7433862800267534
+   ],
+   "z_big_litert": [
+    25.68661349873485,
+    26.329178956535365,
+    26.458693210079577,
+    25.984828264985392,
+    23.914177437762568,
+    25.38268587209122,
+    23.354420215705016,
+    28.75416438498627
+   ],
+   "positions_big_litert": 211,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "done_turn:speech_activity",
+   "kind": "audio",
+   "scenario": "speech_activity",
+   "input": "done_turn.wav",
+   "p_torch": [
+    0.1636933982372284,
+    0.8363065719604492
+   ],
+   "p_onnx": [
+    0.20678567784677404,
+    0.7932143221532258
+   ],
+   "conf_torch": 0.8363065968843281,
+   "conf_onnx": 0.793214322153226,
+   "fast_tokens": 157,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.8551031370103657,
+    0.1448968629896344
+   ],
+   "z_big": [
+    29.33304786682129,
+    27.55784797668457
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Is someone speaking at the very end of this audio?\nA) not_speaking — Silence, noise or music only at the end\nB) speaking — A person is speaking at the end\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 200,
+   "ms_big_py": 13877.0010471344,
+   "p_big_litert": [
+    0.6053709046650075,
+    0.3946290953349924
+   ],
+   "z_big_litert": [
+    29.64473372504124,
+    29.216838713909652
+   ],
+   "positions_big_litert": 200,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Is someone speaking at the very end of this audio?\nA) not_speaking — Silence, noise or music only at the end\nB) speaking — A person is speaking at the end\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "done_turn:sound_present",
+   "kind": "audio",
+   "scenario": "sound_present",
+   "input": "done_turn.wav",
+   "p_torch": [
+    0.9339152574539185,
+    0.11550401151180267,
+    0.07937362790107727,
+    0.07563059777021408,
+    0.05003860965371132,
+    0.07233815640211105,
+    0.0448947437107563,
+    0.07202492654323578
+   ],
+   "p_onnx": [
+    0.9304344940993204,
+    0.11266431897895547,
+    0.07373035822429143,
+    0.07595372244774448,
+    0.05086654787486644,
+    0.07088149274776148,
+    0.0444710687457785,
+    0.06890107656834933
+   ],
+   "conf_torch": 0.8844959884881973,
+   "conf_onnx": 0.8873356810210445,
+   "fast_tokens": 167,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.9931911981298887,
+    0.27915258429224654,
+    0.07301495719997168,
+    0.1730996110007256,
+    0.057747308266444704,
+    0.12168662102022375,
+    0.042828820581551165,
+    0.10576252117136048
+   ],
+   "z_big": [
+    12.993261337280273,
+    7.061885356903076,
+    5.469281196594238,
+    6.446737289428711,
+    5.218357563018799,
+    6.033999919891357,
+    4.903783321380615,
+    5.875779151916504
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "positions_big": 216,
+   "ms_big_py": 16452.57520675659,
+   "p_big_litert": [
+    0.965052990016359,
+    0.32105820257824824,
+    0.029875438190503388,
+    0.10762326514118709,
+    0.054468134677029476,
+    0.10357642978810615,
+    0.04500995110325544,
+    0.09374939435153912
+   ],
+   "z_big_litert": [
+    11.328904411659908,
+    7.2616413309951335,
+    4.530166513778704,
+    5.895302764887291,
+    5.156422569891586,
+    5.852451070019906,
+    4.9557369941879745,
+    5.74186364376866
+   ],
+   "positions_big_litert": 216,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "done_turn:intent",
+   "kind": "audio",
+   "scenario": "intent",
+   "input": "done_turn.wav",
+   "p_torch": [
+    0.06503576785326004,
+    0.5450600981712341,
+    0.2999989092350006,
+    0.08990529179573059
+   ],
+   "p_onnx": [
+    0.06445882961862481,
+    0.5424468316756307,
+    0.30304321557272534,
+    0.09005112313301922
+   ],
+   "conf_torch": 0.5450600616221088,
+   "conf_onnx": 0.5424468316756307,
+   "fast_tokens": 170,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.4067629812614529,
+    0.24773369232331102,
+    0.3194729431431221,
+    0.026030383272114075
+   ],
+   "z_big": [
+    28.87781524658203,
+    28.381938934326172,
+    28.63625717163086,
+    26.128849029541016
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 215,
+   "ms_big_py": 14179.280281066895,
+   "p_big_litert": [
+    0.17747365021001865,
+    0.23590016117839055,
+    0.4858996667412378,
+    0.1007265218703529
+   ],
+   "z_big_litert": [
+    28.076756578522605,
+    28.361343099810068,
+    29.08393658570076,
+    27.51034357027325
+   ],
+   "positions_big_litert": 215,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "unfinished:speaker_count",
+   "kind": "audio",
+   "scenario": "speaker_count",
+   "input": "unfinished.wav",
+   "p_torch": [
+    0.08256468921899796,
+    0.3606894910335541,
+    0.367741197347641,
+    0.12364942580461502,
+    0.06535519659519196
+   ],
+   "p_onnx": [
+    0.0804538590612088,
+    0.3624687312024209,
+    0.37125494859337344,
+    0.11934997205650523,
+    0.0664724890864916
+   ],
+   "conf_torch": 0.367741197347641,
+   "conf_onnx": 0.37125494859337344,
+   "fast_tokens": 168,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.0021219315228606494,
+    0.8724995243620268,
+    0.11373305708893104,
+    0.011010436211291292,
+    0.0006350508148903446
+   ],
+   "z_big": [
+    22.962732315063477,
+    28.981767654418945,
+    26.944259643554688,
+    24.609249114990234,
+    21.75635528564453
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 214,
+   "ms_big_py": 14797.172784805298,
+   "p_big_litert": [
+    0.0037069860086003828,
+    0.6852916845238878,
+    0.2583685770396971,
+    0.04329543478817836,
+    0.009337317639636454
+   ],
+   "z_big_litert": [
+    23.85066473123777,
+    29.070290145846215,
+    28.094832740025378,
+    26.30849277870145,
+    24.774464601771598
+   ],
+   "positions_big_litert": 214,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "unfinished:music_genre",
+   "kind": "audio",
+   "scenario": "music_genre",
+   "input": "unfinished.wav",
+   "p_torch": [
+    0.011524159461259842,
+    0.0884992852807045,
+    0.5937348008155823,
+    0.17788518965244293,
+    0.0017227003118023276,
+    0.007160818204283714,
+    0.0021245290990918875,
+    0.11734837293624878
+   ],
+   "p_onnx": [
+    0.011352318210501323,
+    0.08766314768773947,
+    0.588810218034042,
+    0.18202548278932706,
+    0.0017722986502549496,
+    0.007832466270910589,
+    0.002223971983917045,
+    0.11832009637330765
+   ],
+   "conf_torch": 0.5937348864550615,
+   "conf_onnx": 0.588810218034042,
+   "fast_tokens": 181,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.023835477693402305,
+    0.10267895541534866,
+    0.422884966063432,
+    0.09638935225276374,
+    0.0019466894132655975,
+    0.016621415604817964,
+    0.009893498989024583,
+    0.32574964456794525
+   ],
+   "z_big": [
+    26.13482666015625,
+    27.595258712768555,
+    29.010751724243164,
+    27.532047271728516,
+    23.62978172302246,
+    25.774343490600586,
+    25.255529403686523,
+    28.749780654907227
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 230,
+   "ms_big_py": 16686.068773269653,
+   "p_big_litert": [
+    0.08807308270636964,
+    0.22057096061539408,
+    0.2699769956954552,
+    0.2173672148273635,
+    0.00452735922362932,
+    0.040516185783752275,
+    0.013088043256895606,
+    0.14588015789114045
+   ],
+   "z_big_litert": [
+    27.066710392806122,
+    27.98476289765519,
+    28.186880191930975,
+    27.970131595243245,
+    24.098682254361027,
+    26.290244980946014,
+    25.16024252262595,
+    27.571328885966018
+   ],
+   "positions_big_litert": 230,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "unfinished:turn_complete",
+   "kind": "audio",
+   "scenario": "turn_complete",
+   "input": "unfinished.wav",
+   "p_torch": [
+    0.6895222663879395,
+    0.31047776341438293
+   ],
+   "p_onnx": [
+    0.6309312992085845,
+    0.3690687007914155
+   ],
+   "conf_torch": 0.6895222458385752,
+   "conf_onnx": 0.6309312992085845,
+   "fast_tokens": 185,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.5743630629545843,
+    0.4256369370454157
+   ],
+   "z_big": [
+    29.708332061767578,
+    29.40865707397461
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 228,
+   "ms_big_py": 15989.409923553467,
+   "p_big_litert": [
+    0.6114430362729463,
+    0.3885569637270538
+   ],
+   "z_big_litert": [
+    29.548688318521975,
+    29.095306305664927
+   ],
+   "positions_big_litert": 228,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "complaint:sound_present",
+   "kind": "audio",
+   "scenario": "sound_present",
+   "input": "complaint.wav",
+   "p_torch": [
+    0.9139829874038696,
+    0.08350483328104019,
+    0.05671681836247444,
+    0.08666429668664932,
+    0.06798261404037476,
+    0.09861772507429123,
+    0.02754608541727066,
+    0.04809393361210823
+   ],
+   "p_onnx": [
+    0.9155838249247193,
+    0.07706697757104966,
+    0.05170654917262179,
+    0.08106559479658329,
+    0.06264251512219858,
+    0.09249031261383941,
+    0.026710584203538834,
+    0.045070377245282886
+   ],
+   "conf_torch": 0.9013822749257088,
+   "conf_onnx": 0.9075096873861606,
+   "fast_tokens": 184,
+   "route": "fast",
+   "route_torch": "fast"
+  },
+  {
+   "id": "complaint:intent",
+   "kind": "audio",
+   "scenario": "intent",
+   "input": "complaint.wav",
+   "p_torch": [
+    0.10575389117002487,
+    0.39735668897628784,
+    0.22880811989307404,
+    0.2680813670158386
+   ],
+   "p_onnx": [
+    0.10735299679823186,
+    0.4101506888675596,
+    0.22726889687651342,
+    0.25522741745769506
+   ],
+   "conf_torch": 0.3973566623314473,
+   "conf_onnx": 0.4101506888675596,
+   "fast_tokens": 187,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.008240871116439053,
+    0.01546351566821322,
+    0.001841050432980887,
+    0.974454562782367
+   ],
+   "z_big": [
+    23.686641693115234,
+    24.31601905822754,
+    22.1878719329834,
+    28.459413528442383
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 232,
+   "ms_big_py": 15378.734350204468,
+   "p_big_litert": [
+    0.0064005845113406035,
+    0.02025246936071661,
+    0.003952461710481497,
+    0.9693944844174612
+   ],
+   "z_big_litert": [
+    23.05159386651138,
+    24.20348128027621,
+    22.56954315305596,
+    28.071876184127234
+   ],
+   "positions_big_litert": 232,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "complaint:speech_activity",
+   "kind": "audio",
+   "scenario": "speech_activity",
+   "input": "complaint.wav",
+   "p_torch": [
+    0.06042373925447464,
+    0.9395762085914612
+   ],
+   "p_onnx": [
+    0.05537726390066599,
+    0.9446227360993341
+   ],
+   "conf_torch": 0.9395762575941816,
+   "conf_onnx": 0.9446227360993341,
+   "fast_tokens": 174,
+   "route": "fast",
+   "route_torch": "fast"
+  },
+  {
+   "id": "two_speakers:music_genre",
+   "kind": "audio",
+   "scenario": "music_genre",
+   "input": "two_speakers.wav",
+   "p_torch": [
+    0.019105907529592514,
+    0.10728449374437332,
+    0.445204496383667,
+    0.20126089453697205,
+    0.002508990466594696,
+    0.00941317155957222,
+    0.003026155987754464,
+    0.2121959626674652
+   ],
+   "p_onnx": [
+    0.01958662010708167,
+    0.10581904288729173,
+    0.42863070283302696,
+    0.20239232019959158,
+    0.0027740036866444025,
+    0.011046957012203644,
+    0.003355518891584944,
+    0.2263948343825751
+   ],
+   "conf_torch": 0.4452044639389503,
+   "conf_onnx": 0.42863070283302696,
+   "fast_tokens": 227,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.005086280012478821,
+    0.020312685428231173,
+    0.08474732977843527,
+    0.019332913760677216,
+    0.0011034587537067744,
+    0.0011615633151515355,
+    0.0003206559746147123,
+    0.8679351129767044
+   ],
+   "z_big": [
+    23.674541473388672,
+    25.059240341186523,
+    26.487668991088867,
+    25.009803771972656,
+    22.14644432067871,
+    22.19776153564453,
+    20.910608291625977,
+    28.814111709594727
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 276,
+   "ms_big_py": 16194.612503051758,
+   "p_big_litert": [
+    0.03163755927256309,
+    0.05930198010100415,
+    0.08002205664422167,
+    0.045275910753816276,
+    0.004417148260416912,
+    0.010668376258972028,
+    0.0025901857807511274,
+    0.7660867829282548
+   ],
+   "z_big_litert": [
+    25.54384597118892,
+    26.172143668522864,
+    26.47180327655487,
+    25.902276091438175,
+    23.574995269742775,
+    24.456784847396392,
+    23.04123057498741,
+    28.73079642879207
+   ],
+   "positions_big_litert": 276,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "two_speakers:turn_complete",
+   "kind": "audio",
+   "scenario": "turn_complete",
+   "input": "two_speakers.wav",
+   "p_torch": [
+    0.2772742211818695,
+    0.7227257490158081
+   ],
+   "p_onnx": [
+    0.24558860884738873,
+    0.7544113911526112
+   ],
+   "conf_torch": 0.7227257705547145,
+   "conf_onnx": 0.7544113911526112,
+   "fast_tokens": 231,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.11242564220357525,
+    0.8875743577964247
+   ],
+   "z_big": [
+    27.257078170776367,
+    29.323278427124023
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 274,
+   "ms_big_py": 17724.841117858887,
+   "p_big_litert": [
+    0.14276820926398923,
+    0.8572317907360109
+   ],
+   "z_big_litert": [
+    27.6403371868391,
+    29.43282313555111
+   ],
+   "positions_big_litert": 274,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "two_speakers:speaker_count",
+   "kind": "audio",
+   "scenario": "speaker_count",
+   "input": "two_speakers.wav",
+   "p_torch": [
+    0.05156957358121872,
+    0.19391874969005585,
+    0.5020309090614319,
+    0.18707405030727386,
+    0.0654066950082779
+   ],
+   "p_onnx": [
+    0.05311515607551466,
+    0.1965081992398149,
+    0.5065256030000813,
+    0.18207055869749764,
+    0.06178048298709146
+   ],
+   "conf_torch": 0.5020309202826974,
+   "conf_onnx": 0.5065256030000813,
+   "fast_tokens": 214,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.0008370753912221454,
+    0.23171033214000974,
+    0.6414760616757296,
+    0.12422281454322662,
+    0.0017537162498120235
+   ],
+   "z_big": [
+    22.915271759033203,
+    28.53860092163086,
+    29.556884765625,
+    27.915189743041992,
+    23.654850006103516
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 260,
+   "ms_big_py": 16477.17833518982,
+   "p_big_litert": [
+    0.0015311571865815191,
+    0.18510194353645237,
+    0.6072566010838915,
+    0.1952401819766565,
+    0.010870116216418146
+   ],
+   "z_big_litert": [
+    23.44715541995138,
+    28.24203835877337,
+    29.430083077600585,
+    28.29536214240721,
+    25.40714903188101
+   ],
+   "positions_big_litert": 260,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "music_only:intent",
+   "kind": "audio",
+   "scenario": "intent",
+   "input": "music_only.wav",
+   "p_torch": [
+    0.12642329931259155,
+    0.3113611936569214,
+    0.4281010627746582,
+    0.13411438465118408
+   ],
+   "p_onnx": [
+    0.12879154773947732,
+    0.3041841788095887,
+    0.43334938322357425,
+    0.13367489022735976
+   ],
+   "conf_torch": 0.4281010882914715,
+   "conf_onnx": 0.43334938322357425,
+   "fast_tokens": 215,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.33834653438384327,
+    0.336366624077383,
+    0.25356020891798786,
+    0.07172663262078592
+   ],
+   "z_big": [
+    28.732646942138672,
+    28.726778030395508,
+    28.444177627563477,
+    27.181438446044922
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 260,
+   "ms_big_py": 17578.617811203003,
+   "p_big_litert": [
+    0.28665003884685664,
+    0.27244919832854697,
+    0.3245811587699341,
+    0.11631960405466231
+   ],
+   "z_big_litert": [
+    28.45483702751882,
+    28.404027101215558,
+    28.579110541585198,
+    27.552916542491964
+   ],
+   "positions_big_litert": 260,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "music_only:speech_activity",
+   "kind": "audio",
+   "scenario": "speech_activity",
+   "input": "music_only.wav",
+   "p_torch": [
+    0.9853028059005737,
+    0.014697231352329254
+   ],
+   "p_onnx": [
+    0.984488749367298,
+    0.015511250632702084
+   ],
+   "conf_torch": 0.9853027691951852,
+   "conf_onnx": 0.984488749367298,
+   "fast_tokens": 202,
+   "route": "fast",
+   "route_torch": "fast"
+  },
+  {
+   "id": "music_only:sound_present",
+   "kind": "audio",
+   "scenario": "sound_present",
+   "input": "music_only.wav",
+   "p_torch": [
+    0.013663253746926785,
+    0.8727921843528748,
+    0.055485207587480545,
+    0.1384926587343216,
+    0.18216751515865326,
+    0.10899718105792999,
+    0.05519334226846695,
+    0.10791519284248352
+   ],
+   "p_onnx": [
+    0.013043863890445574,
+    0.8755226037152466,
+    0.05248720727891335,
+    0.13638179756850816,
+    0.17510438862582148,
+    0.1094675245852536,
+    0.05356043346415465,
+    0.1064850333388226
+   ],
+   "conf_torch": 0.8178324848413467,
+   "conf_onnx": 0.8248956113741786,
+   "fast_tokens": 212,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.0677490349035505,
+    0.9482564967665833,
+    0.10183647289526446,
+    0.11186881204394325,
+    0.04310104387762319,
+    0.08722202321092466,
+    0.2823826435008268,
+    0.1598017714686807
+   ],
+   "z_big": [
+    5.388762474060059,
+    10.918880462646484,
+    5.83357048034668,
+    5.9387617111206055,
+    4.910403728485107,
+    5.662518501281738,
+    7.077880859375,
+    6.350850582122803
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "positions_big": 261,
+   "ms_big_py": 17212.671756744385,
+   "p_big_litert": [
+    0.08947624984678258,
+    0.8400379655144473,
+    0.1157207585474224,
+    0.09231146865199825,
+    0.10521855884034421,
+    0.3702509680708536,
+    0.29346512815794834,
+    0.15985263308713635
+   ],
+   "z_big_litert": [
+    5.690507555319922,
+    9.669064898904562,
+    5.976961452017582,
+    5.724821408929818,
+    5.87001452460457,
+    7.479414003444098,
+    7.131940572603044,
+    6.351229348016026
+   ],
+   "positions_big_litert": 261,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "siren:turn_complete",
+   "kind": "audio",
+   "scenario": "turn_complete",
+   "input": "siren.wav",
+   "p_torch": [
+    0.23943711817264557,
+    0.7605628371238708
+   ],
+   "p_onnx": [
+    0.24647294579629586,
+    0.7535270542037041
+   ],
+   "conf_torch": 0.7605628711236807,
+   "conf_onnx": 0.7535270542037041,
+   "fast_tokens": 188,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.20321912702620937,
+    0.7967808729737905
+   ],
+   "z_big": [
+    28.121097564697266,
+    29.48739242553711
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 231,
+   "ms_big_py": 14077.067613601685,
+   "p_big_litert": [
+    0.17000897428502948,
+    0.8299910257149706
+   ],
+   "z_big_litert": [
+    27.76708505167293,
+    29.352648714444655
+   ],
+   "positions_big_litert": 231,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "siren:speaker_count",
+   "kind": "audio",
+   "scenario": "speaker_count",
+   "input": "siren.wav",
+   "p_torch": [
+    0.5125138759613037,
+    0.2912847697734833,
+    0.06416388601064682,
+    0.032965075224637985,
+    0.09907248616218567
+   ],
+   "p_onnx": [
+    0.49869479024681784,
+    0.2994066034113111,
+    0.0659164142497553,
+    0.033067080185998264,
+    0.10291511190611743
+   ],
+   "conf_torch": 0.5125138282297339,
+   "conf_onnx": 0.4986947902468179,
+   "fast_tokens": 171,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.9424486238888763,
+    0.05156483003273371,
+    0.003954900355732302,
+    0.0010501011871318791,
+    0.0009815445355258556
+   ],
+   "z_big": [
+    28.391000747680664,
+    25.48535919189453,
+    22.9174747467041,
+    21.591405868530273,
+    21.52389144897461
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 217,
+   "ms_big_py": 16474.035501480103,
+   "p_big_litert": [
+    0.8808732593649163,
+    0.099112902339975,
+    0.010756149712952313,
+    0.005251564514632291,
+    0.004006124067523976
+   ],
+   "z_big_litert": [
+    27.674273643986567,
+    25.489619516388387,
+    23.2688375456982,
+    22.551885923367568,
+    22.281184095560352
+   ],
+   "positions_big_litert": 217,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "siren:music_genre",
+   "kind": "audio",
+   "scenario": "music_genre",
+   "input": "siren.wav",
+   "p_torch": [
+    0.0008955046068876982,
+    0.10509246587753296,
+    0.3988513648509979,
+    0.4607788622379303,
+    0.0005525689921341836,
+    0.0007541602244600654,
+    0.0002486885350663215,
+    0.03282642737030983
+   ],
+   "p_onnx": [
+    0.0009168117310575627,
+    0.10466762633631163,
+    0.40703788080287867,
+    0.4530601331368159,
+    0.0005474728680127596,
+    0.0007815584684455558,
+    0.0002444239022381635,
+    0.03274409275423973
+   ],
+   "conf_torch": 0.4607788425648305,
+   "conf_onnx": 0.4530601331368159,
+   "fast_tokens": 184,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.0009137988702115991,
+    0.05014664682846058,
+    0.4773970990116036,
+    0.4561049564118743,
+    0.00021728774239972463,
+    0.0005205199444393404,
+    4.789392850757175e-05,
+    0.014651797262503157
+   ],
+   "z_big": [
+    21.953678131103516,
+    25.95877456665039,
+    28.21217155456543,
+    28.166545867919922,
+    20.517290115356445,
+    21.39089584350586,
+    19.005056381225586,
+    24.72838592529297
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 233,
+   "ms_big_py": 16017.094612121582,
+   "p_big_litert": [
+    0.0012108549900524087,
+    0.06758416130867775,
+    0.20211893180877513,
+    0.72021469530657,
+    0.0008995874881211868,
+    0.0024729808231057676,
+    8.704274673946556e-05,
+    0.005411745527958394
+   ],
+   "z_big_litert": [
+    21.332020508208764,
+    25.354067450206482,
+    26.449550090251563,
+    27.720243150264334,
+    21.034874827514905,
+    22.046118028780477,
+    18.699337855614136,
+    22.829265484017352
+   ],
+   "positions_big_litert": 233,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "quiet_room:speech_activity",
+   "kind": "audio",
+   "scenario": "speech_activity",
+   "input": "quiet_room.wav",
+   "p_torch": [
+    0.9882211089134216,
+    0.01177883055061102
+   ],
+   "p_onnx": [
+    0.9878283603608531,
+    0.012171639639146881
+   ],
+   "conf_torch": 0.988221168736346,
+   "conf_onnx": 0.9878283603608531,
+   "fast_tokens": 127,
+   "route": "fast",
+   "route_torch": "fast"
+  },
+  {
+   "id": "quiet_room:sound_present",
+   "kind": "audio",
+   "scenario": "sound_present",
+   "input": "quiet_room.wav",
+   "p_torch": [
+    0.11267569661140442,
+    0.2820366322994232,
+    0.1594158560037613,
+    0.23601697385311127,
+    0.28585103154182434,
+    0.4412112236022949,
+    0.12018900364637375,
+    0.1481175273656845
+   ],
+   "p_onnx": [
+    0.11199261737647082,
+    0.2828587652688248,
+    0.15653745387725956,
+    0.23235158449201965,
+    0.2801299676448263,
+    0.4407609336123843,
+    0.11900885723980503,
+    0.14687371546056197
+   ],
+   "conf_torch": 0.5587887763977051,
+   "conf_onnx": 0.5592390663876157,
+   "fast_tokens": 137,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.18333910587185764,
+    0.2757073395928983,
+    0.13447110623954361,
+    0.22707231905663552,
+    0.23479914138924493,
+    0.3789187406849736,
+    0.11112015311404308,
+    0.15528889426070672
+   ],
+   "z_big": [
+    6.51666784286499,
+    7.044698715209961,
+    6.148562908172607,
+    6.785637378692627,
+    6.829146385192871,
+    7.516414165496826,
+    5.931204319000244,
+    6.31684684753418
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "positions_big": 186,
+   "ms_big_py": 13769.603252410889,
+   "p_big_litert": [
+    0.22250909366065175,
+    0.4257654591478242,
+    0.10173528479895959,
+    0.15177800019862367,
+    0.3088828009565801,
+    0.6796886242732416,
+    0.22714749965343675,
+    0.1976226384860875
+   ],
+   "z_big_litert": [
+    6.759450336857315,
+    7.711405022313018,
+    5.8324636984464195,
+    6.289830848141698,
+    7.205206816417053,
+    8.762895529644114,
+    6.786065682513711,
+    6.609334636865885
+   ],
+   "positions_big_litert": 186,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "quiet_room:intent",
+   "kind": "audio",
+   "scenario": "intent",
+   "input": "quiet_room.wav",
+   "p_torch": [
+    0.24151326715946198,
+    0.29857054352760315,
+    0.3017580807209015,
+    0.158158078789711
+   ],
+   "p_onnx": [
+    0.24199636033411717,
+    0.30452714304976664,
+    0.29378037089410797,
+    0.15969612572200817
+   ],
+   "conf_torch": 0.30175808971399337,
+   "conf_onnx": 0.30452714304976664,
+   "fast_tokens": 140,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.3079739240920051,
+    0.28845846234494604,
+    0.32083708392146415,
+    0.08273052964158475
+   ],
+   "z_big": [
+    28.60296630859375,
+    28.53750228881836,
+    28.643884658813477,
+    27.28853988647461
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 185,
+   "ms_big_py": 19422.269344329834,
+   "p_big_litert": [
+    0.25600543653300245,
+    0.2349371928905436,
+    0.3908119726585748,
+    0.1182453979178791
+   ],
+   "z_big_litert": [
+    28.509420177408398,
+    28.423539710824418,
+    28.93244805267753,
+    27.736983605069955
+   ],
+   "positions_big_litert": 185,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "blip_short:speaker_count",
+   "kind": "audio",
+   "scenario": "speaker_count",
+   "input": "blip_short.wav",
+   "p_torch": [
+    0.3733545243740082,
+    0.46017345786094666,
+    0.08828304708003998,
+    0.03502187505364418,
+    0.043167002499103546
+   ],
+   "p_onnx": [
+    0.3718990129337375,
+    0.45862102981729114,
+    0.08934882405192246,
+    0.03517622881561996,
+    0.044954904381429024
+   ],
+   "conf_torch": 0.4601735007179436,
+   "conf_onnx": 0.45862102981729114,
+   "fast_tokens": 56,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.5793462263204167,
+    0.3733113591624986,
+    0.036335676509509494,
+    0.008201981582033212,
+    0.0028047564255419197
+   ],
+   "z_big": [
+    29.103111267089844,
+    28.663623809814453,
+    26.33401107788086,
+    24.8455867767334,
+    23.77252769470215
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 102,
+   "ms_big_py": 14388.69571685791,
+   "p_big_litert": [
+    0.19559003618798496,
+    0.6347033645533046,
+    0.12883981954716295,
+    0.033033476054404196,
+    0.007833303657143279
+   ],
+   "z_big_litert": [
+    27.81567197636965,
+    28.992808907112565,
+    27.398221083666275,
+    26.03717263297591,
+    24.598035503825667
+   ],
+   "positions_big_litert": 102,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "blip_short:music_genre",
+   "kind": "audio",
+   "scenario": "music_genre",
+   "input": "blip_short.wav",
+   "p_torch": [
+    0.02893192507326603,
+    0.2138201892375946,
+    0.21313512325286865,
+    0.21002031862735748,
+    0.004803097806870937,
+    0.016618026420474052,
+    0.004063878674060106,
+    0.30860742926597595
+   ],
+   "p_onnx": [
+    0.028947597283607476,
+    0.21010103965333893,
+    0.22011599573166496,
+    0.20230863364582133,
+    0.004876268405433241,
+    0.016759129091301138,
+    0.004257126653556722,
+    0.31263420953527604
+   ],
+   "conf_torch": 0.30860743285863934,
+   "conf_onnx": 0.3126342095352761,
+   "fast_tokens": 69,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.017597981136045292,
+    0.2742175601042425,
+    0.3120905747515348,
+    0.3144717458129197,
+    0.004767420639751964,
+    0.013585314630357316,
+    0.002063235282192671,
+    0.061206167642955805
+   ],
+   "z_big": [
+    25.82921028137207,
+    28.575347900390625,
+    28.70471954345703,
+    28.71232032775879,
+    24.523231506347656,
+    25.570415496826172,
+    23.685701370239258,
+    27.075674057006836
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 118,
+   "ms_big_py": 14160.673141479492,
+   "p_big_litert": [
+    0.03732129885810075,
+    0.26702708550411214,
+    0.213347937664461,
+    0.33726490232629575,
+    0.012831447633307153,
+    0.04909825188780192,
+    0.004351322138058088,
+    0.07875775398786325
+   ],
+   "z_big_litert": [
+    26.379534053416513,
+    28.347319971862063,
+    28.122894217915906,
+    28.58083855665544,
+    25.31186887893612,
+    26.653793305838178,
+    24.23044961347499,
+    27.126346610967758
+   ],
+   "positions_big_litert": 118,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "blip_short:turn_complete",
+   "kind": "audio",
+   "scenario": "turn_complete",
+   "input": "blip_short.wav",
+   "p_torch": [
+    0.29510974884033203,
+    0.7048901915550232
+   ],
+   "p_onnx": [
+    0.2911823567781517,
+    0.7088176432218483
+   ],
+   "conf_torch": 0.7048902335697552,
+   "conf_onnx": 0.7088176432218483,
+   "fast_tokens": 73,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.22749816389837813,
+    0.7725018361016219
+   ],
+   "z_big": [
+    28.31377601623535,
+    29.53626823425293
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 116,
+   "ms_big_py": 12570.53017616272,
+   "p_big_litert": [
+    0.1795501709857522,
+    0.8204498290142478
+   ],
+   "z_big_litert": [
+    27.897600786348004,
+    29.416998875191062
+   ],
+   "positions_big_litert": 116,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "long_12s:sound_present",
+   "kind": "audio",
+   "scenario": "sound_present",
+   "input": "long_12s.wav",
+   "p_torch": [
+    0.9551756978034973,
+    0.15131732821464539,
+    0.048271965235471725,
+    0.05419072508811951,
+    0.022346850484609604,
+    0.04249231517314911,
+    0.02185066044330597,
+    0.03382623568177223
+   ],
+   "p_onnx": [
+    0.9534080093711755,
+    0.13485872028666962,
+    0.043229312778961075,
+    0.05392044694385903,
+    0.021515608821577832,
+    0.03996263477278697,
+    0.02243179735472681,
+    0.034586073288835485
+   ],
+   "conf_torch": 0.8486826717853546,
+   "conf_onnx": 0.8651412797133304,
+   "fast_tokens": 362,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.99528394111668,
+    0.2078937477094985,
+    0.08133065967352744,
+    0.09969228597077527,
+    0.040890443482047054,
+    0.08247050135042407,
+    0.037915814848158175,
+    0.061325232157509964
+   ],
+   "z_big": [
+    13.362608909606934,
+    6.672885894775391,
+    5.586151123046875,
+    5.809906005859375,
+    4.855445384979248,
+    5.6013102531433105,
+    4.776820659637451,
+    5.282276630401611
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "positions_big": 411,
+   "ms_big_py": 19346.97699546814,
+   "p_big_litert": [
+    0.9755714202985409,
+    0.4372237095769759,
+    0.06324663646878499,
+    0.08292275563518392,
+    0.07558858569998045,
+    0.14262904544650054,
+    0.07442831843665591,
+    0.12670099131014853
+   ],
+   "z_big_litert": [
+    11.697823938981891,
+    7.7581171025350955,
+    5.315176233187657,
+    5.607272128472884,
+    5.506702376524436,
+    6.216930808258335,
+    5.489979226497796,
+    6.080106220742177
+   ],
+   "positions_big_litert": 411,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "long_12s:intent",
+   "kind": "audio",
+   "scenario": "intent",
+   "input": "long_12s.wav",
+   "p_torch": [
+    0.13006721436977386,
+    0.7063680291175842,
+    0.10339824855327606,
+    0.06016646698117256
+   ],
+   "p_onnx": [
+    0.13649019790804626,
+    0.6961670429683909,
+    0.11166820451081128,
+    0.055674554612751614
+   ],
+   "conf_torch": 0.7063680580632711,
+   "conf_onnx": 0.6961670429683909,
+   "fast_tokens": 365,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.8110346365243419,
+    0.17774487924905893,
+    0.006204408401709057,
+    0.005016075824890277
+   ],
+   "z_big": [
+    28.745468139648438,
+    27.227506637573242,
+    23.872417449951172,
+    23.659805297851562
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 410,
+   "ms_big_py": 20818.106651306152,
+   "p_big_litert": [
+    0.6796077826424887,
+    0.26690809393562587,
+    0.025735728607654898,
+    0.027748394814230644
+   ],
+   "z_big_litert": [
+    28.27056352282772,
+    27.335952062970932,
+    24.99692792593592,
+    25.072225675283835
+   ],
+   "positions_big_litert": 410,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "long_12s:speech_activity",
+   "kind": "audio",
+   "scenario": "speech_activity",
+   "input": "long_12s.wav",
+   "p_torch": [
+    0.010965771973133087,
+    0.9890342950820923
+   ],
+   "p_onnx": [
+    0.011460111290038858,
+    0.988539888709961
+   ],
+   "conf_torch": 0.9890342287621792,
+   "conf_onnx": 0.9885398887099611,
+   "fast_tokens": 352,
+   "route": "fast",
+   "route_torch": "fast"
+  },
+  {
+   "id": "long_28s:music_genre",
+   "kind": "audio",
+   "scenario": "music_genre",
+   "input": "long_28s.wav",
+   "p_torch": [
+    0.007082525175064802,
+    0.06401155143976212,
+    0.4310910701751709,
+    0.30603042244911194,
+    0.0009210300049744546,
+    0.0031947046518325806,
+    0.0008867948199622333,
+    0.18678192794322968
+   ],
+   "p_onnx": [
+    0.006505429544244155,
+    0.06443500449527942,
+    0.45969851781695625,
+    0.2428839824220239,
+    0.0010637867218327517,
+    0.0032462495884328915,
+    0.0009553007648655564,
+    0.22121172864636504
+   ],
+   "conf_torch": 0.4310910586826675,
+   "conf_onnx": 0.45969851781695625,
+   "fast_tokens": 759,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.0015015111458048355,
+    0.05727147896619196,
+    0.1266763653219049,
+    0.4920932865513283,
+    0.0007346099598515656,
+    0.0009250594748264922,
+    0.0002675072905606421,
+    0.32053018128953137
+   ],
+   "z_big": [
+    23.0024356842041,
+    26.643766403198242,
+    27.437599182128906,
+    28.794631958007812,
+    22.287548065185547,
+    22.51806640625,
+    21.277355194091797,
+    28.36594009399414
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 808,
+   "ms_big_py": 33395.77674865723,
+   "p_big_litert": [
+    0.005965880985694247,
+    0.07301948136787627,
+    0.18312053664819294,
+    0.46662983887252085,
+    0.0042299826152253075,
+    0.0101225988365494,
+    0.001653966881961567,
+    0.25525771379197937
+   ],
+   "z_big_litert": [
+    23.981183645716662,
+    26.485853182182233,
+    27.405271514805797,
+    28.3406632157031,
+    23.637324791757614,
+    24.50989734150558,
+    22.69830348198688,
+    27.737400585708478
+   ],
+   "positions_big_litert": 808,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the genre of this music?\nA) rock\nB) pop\nC) hip hop\nD) electronic\nE) classical\nF) jazz\nG) folk or country\nH) not music — There is no music in the clip\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "long_28s:turn_complete",
+   "kind": "audio",
+   "scenario": "turn_complete",
+   "input": "long_28s.wav",
+   "p_torch": [
+    0.19001434743404388,
+    0.8099856376647949
+   ],
+   "p_onnx": [
+    0.19324764883830192,
+    0.8067523511616981
+   ],
+   "conf_torch": 0.8099856497345217,
+   "conf_onnx": 0.8067523511616981,
+   "fast_tokens": 763,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.27224443213205396,
+    0.727755567867946
+   ],
+   "z_big": [
+    28.600242614746094,
+    29.583507537841797
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 806,
+   "ms_big_py": 33686.01298332214,
+   "p_big_litert": [
+    0.40519739344076694,
+    0.594802606559233
+   ],
+   "z_big_litert": [
+    29.355980983509003,
+    29.739836240748453
+   ],
+   "positions_big_litert": 806,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: At the end of this audio, has the person completed their speaking turn?\nA) incomplete — The speaker has not completed their turn; wait for them to continue\nB) complete — The speaker has completed their turn; a response can naturally begin\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "long_28s:speaker_count",
+   "kind": "audio",
+   "scenario": "speaker_count",
+   "input": "long_28s.wav",
+   "p_torch": [
+    0.041200339794158936,
+    0.22589558362960815,
+    0.48049408197402954,
+    0.1833648681640625,
+    0.06904507428407669
+   ],
+   "p_onnx": [
+    0.04376223827241932,
+    0.23942714085457129,
+    0.470504385668113,
+    0.17778380133258767,
+    0.06852243387230875
+   ],
+   "conf_torch": 0.48049410703375006,
+   "conf_onnx": 0.470504385668113,
+   "fast_tokens": 746,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.044145034408318226,
+    0.7860031591770448,
+    0.14482248996995323,
+    0.023292101225264046,
+    0.0017372152194198005
+   ],
+   "z_big": [
+    26.271310806274414,
+    29.15079116821289,
+    27.459339141845703,
+    25.63194465637207,
+    23.036113739013672
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 792,
+   "ms_big_py": 32439.568519592285,
+   "p_big_litert": [
+    0.01079778222428042,
+    0.5679707072718558,
+    0.320406440887214,
+    0.0849497761456879,
+    0.015875293470961824
+   ],
+   "z_big_litert": [
+    25.1929567940497,
+    29.155685876297113,
+    28.583206348246694,
+    27.255676243594557,
+    25.57838006157799
+   ],
+   "positions_big_litert": 792,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How many different people speak in this audio?\nA) 0\nB) 1\nC) 2\nD) 3\nE) 4 or more\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "resample_44k_stereo:intent",
+   "kind": "audio",
+   "scenario": "intent",
+   "input": "resample_44k_stereo.wav",
+   "p_torch": [
+    0.47004497051239014,
+    0.3939133882522583,
+    0.11945733428001404,
+    0.016584305092692375
+   ],
+   "p_onnx": [
+    0.4870291624148054,
+    0.37433580503708236,
+    0.12062525412678733,
+    0.01800977842132498
+   ],
+   "conf_torch": 0.4700449713879171,
+   "conf_onnx": 0.4870291624148054,
+   "fast_tokens": 168,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.9718041123699273,
+    0.014013917408142205,
+    0.011420059875702087,
+    0.0027619103462285287
+   ],
+   "z_big": [
+    28.588510513305664,
+    24.349407196044922,
+    24.14472770690918,
+    22.725278854370117
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 213,
+   "ms_big_py": 16289.839506149292,
+   "p_big_litert": [
+    0.9489494401112378,
+    0.023312482614956075,
+    0.016687936422267933,
+    0.01105014085153817
+   ],
+   "z_big_litert": [
+    28.34755578769734,
+    24.641189219187897,
+    24.306886355987054,
+    23.89464344215135
+   ],
+   "positions_big_litert": 213,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: What is the speaker asking for?\nA) information — A question or request for facts\nB) an action — Asking someone to do something\nC) small talk — Greeting or social chat, no request\nD) a complaint — Expressing a problem or dissatisfaction\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "resample_44k_stereo:speech_activity",
+   "kind": "audio",
+   "scenario": "speech_activity",
+   "input": "resample_44k_stereo.wav",
+   "p_torch": [
+    0.076005719602108,
+    0.9239943027496338
+   ],
+   "p_onnx": [
+    0.08054866785943442,
+    0.9194513321405656
+   ],
+   "conf_torch": 0.9239942820967522,
+   "conf_onnx": 0.9194513321405656,
+   "fast_tokens": 155,
+   "route": "fast",
+   "route_torch": "fast"
+  },
+  {
+   "id": "resample_44k_stereo:sound_present",
+   "kind": "audio",
+   "scenario": "sound_present",
+   "input": "resample_44k_stereo.wav",
+   "p_torch": [
+    0.9365612864494324,
+    0.2310030609369278,
+    0.08999750763177872,
+    0.04981362819671631,
+    0.038590509444475174,
+    0.07807021588087082,
+    0.030392685905098915,
+    0.04123871773481369
+   ],
+   "p_onnx": [
+    0.9358405225640268,
+    0.22654803237360605,
+    0.08983956739414492,
+    0.05328709549744364,
+    0.03942537948657188,
+    0.07639964134486156,
+    0.03146280073606432,
+    0.042290857993021735
+   ],
+   "conf_torch": 0.7689969390630722,
+   "conf_onnx": 0.773451967626394,
+   "fast_tokens": 165,
+   "route": "escalated",
+   "route_torch": "escalated",
+   "p_big": [
+    0.9936498052903999,
+    0.2851997688498512,
+    0.13211694278749866,
+    0.04850308877875375,
+    0.025407298988583005,
+    0.08211201774205645,
+    0.028470713780288037,
+    0.06084946561593008
+   ],
+   "z_big": [
+    13.063453674316406,
+    7.09174108505249,
+    6.128184795379639,
+    5.034145355224609,
+    4.3635711669921875,
+    5.596563339233398,
+    4.4805588722229,
+    5.27398157119751
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "positions_big": 214,
+   "ms_big_py": 15103.469848632812,
+   "p_big_litert": [
+    0.9721329530074847,
+    0.31458287657171957,
+    0.09199153028187745,
+    0.08328250135995763,
+    0.0606112478211012,
+    0.16757370245569692,
+    0.05626630864485543,
+    0.1146131918826336
+   ],
+   "z_big_litert": [
+    11.562602012309503,
+    7.231774281351018,
+    5.720997117876038,
+    5.611993419540655,
+    5.269805397009424,
+    6.407632896350462,
+    5.190806224455658,
+    5.966092602890146
+   ],
+   "positions_big_litert": 214,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which of these can be heard in the audio? Select all that apply.\nA) speech\nB) music\nC) a vehicle\nD) an animal\nE) water\nF) wind\nG) an alarm or siren\nH) tools or machinery\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "text:triage:36",
+   "kind": "text",
+   "scenario": "triage",
+   "input": "My order arrived broken and nobody answers the phone. I want my money back now.",
+   "route": "routed",
+   "p_big": [
+    0.5315577382191824,
+    0.45768635674346764,
+    0.006474454028995231,
+    0.004281451008354726
+   ],
+   "z_big": [
+    29.083168029785156,
+    28.93354034423828,
+    24.675220489501953,
+    24.261648178100586
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nRules: You moderate a support inbox.\nInput: My order arrived broken and nobody answers the phone. I want my money back now.\nQuestion: Which team should handle this?\nA) billing — Refunds and payments\nB) shipping — Delivery problems\nC) sales\nD) abuse — Threats or harassment\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 112,
+   "ms_big_py": 5344.352722167969,
+   "p_big_litert": [
+    0.13822462705925365,
+    0.8438279051036267,
+    0.008823055738174358,
+    0.009124412098945326
+   ],
+   "z_big_litert": [
+    26.98351156130058,
+    28.792580037049447,
+    24.231999732742523,
+    24.265584937030546
+   ],
+   "positions_big_litert": 112,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nRules: You moderate a support inbox.\nInput: My order arrived broken and nobody answers the phone. I want my money back now.\nQuestion: Which team should handle this?\nA) billing — Refunds and payments\nB) shipping — Delivery problems\nC) sales\nD) abuse — Threats or harassment\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "text:triage:37",
+   "kind": "text",
+   "scenario": "triage",
+   "input": "Thanks so much, the replacement works perfectly!",
+   "route": "routed",
+   "p_big": [
+    0.09754749273233555,
+    0.763954151017552,
+    0.12783963219671216,
+    0.010658724053400207
+   ],
+   "z_big": [
+    26.724109649658203,
+    28.782278060913086,
+    26.99454689025879,
+    24.510149002075195
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nRules: You moderate a support inbox.\nInput: Thanks so much, the replacement works perfectly!\nQuestion: Which team should handle this?\nA) billing — Refunds and payments\nB) shipping — Delivery problems\nC) sales\nD) abuse — Threats or harassment\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 104,
+   "ms_big_py": 3923.933267593384,
+   "p_big_litert": [
+    0.07940468496380249,
+    0.8122655167028391,
+    0.09384360350900747,
+    0.014486194824350975
+   ],
+   "z_big_litert": [
+    25.976189380831823,
+    28.301459287462656,
+    26.143261613910347,
+    24.274828124567755
+   ],
+   "positions_big_litert": 104,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nRules: You moderate a support inbox.\nInput: Thanks so much, the replacement works perfectly!\nQuestion: Which team should handle this?\nA) billing — Refunds and payments\nB) shipping — Delivery problems\nC) sales\nD) abuse — Threats or harassment\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  },
+  {
+   "id": "image:portrait.png",
+   "kind": "image",
+   "scenario": "photo_people",
+   "input": "portrait.png",
+   "route": "routed",
+   "p_big": [
+    0.9999766789317044,
+    2.3321068295567206e-05
+   ],
+   "z_big": [
+    27.277294158935547,
+    16.611164093017578
+   ],
+   "prompt_big": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|image|>\nQuestion: Is there a person in the picture?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "positions_big": 604,
+   "ms_big_py": 47421.10872268677,
+   "p_big_litert": [
+    0.9997845823406324,
+    0.00021541765936765314
+   ],
+   "z_big_litert": [
+    26.440017816451917,
+    17.997301444779747
+   ],
+   "positions_big_litert": 604,
+   "prompt_big_litert": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|image|>\nQuestion: Is there a person in the picture?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n"
+  }
+ ],
+ "generated_by": "fast/make_cascade_bundle.py: PyTorch Smaug-Audio-Decisions-0.7B + Python replay of the ONNX path + llama_decide.py (same C core)",
+ "litert": {
+  "model": "smaug-decisions-full-vis560.litertlm",
+  "max_tokens": 2048,
+  "prompt_tokens": 2000,
+  "visual_budget": 560,
+  "threads": 4
+ }
+}

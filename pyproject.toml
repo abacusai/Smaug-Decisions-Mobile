@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smaug-decide"
+version = "0.1.0"
+description = "Smaug-Decisions models: calibrated typed decisions over audio, images and text in one forward pass, on servers and phones."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [{name = "Abacus.AI"}]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pillow",
+    "soundfile",
+    "huggingface_hub",
+    "torch>=2.8",
+    "torchvision",  # the processors' video components import it, even for audio, image and text decisions
+    "transformers>=5.20",
+]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+server = ["fastapi", "uvicorn", "scipy"]
+coreml = ["coremltools>=9"]
+mlx = ["mlx", "mlx-vlm"]
+dev = ["pytest", "httpx", "fastapi", "ruff==0.17.3"]
+
+[project.urls]
+Homepage = "https://github.com/abacusai/Smaug-Decisions-Mobile"
+Documentation = "https://github.com/abacusai/Smaug-Decisions-Mobile/tree/main/docs"
+Source = "https://github.com/abacusai/Smaug-Decisions-Mobile"
+Issues = "https://github.com/abacusai/Smaug-Decisions-Mobile/issues"
+"Smaug-Decisions" = "https://huggingface.co/abacusai/Smaug-Decisions"
+"Smaug-Audio-Decisions-0.7B" = "https://huggingface.co/abacusai/Smaug-Audio-Decisions-0.7B"
+"Smaug-Decisions-LiteRT" = "https://huggingface.co/abacusai/Smaug-Decisions-LiteRT"
+
+[tool.setuptools]
+packages = ["smaug_decide"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+extend-exclude = ["*.md", "apps"]  # the apps keep their own tools and style
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E741"]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+known-first-party = ["smaug_decide"]

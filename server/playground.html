@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Decisions playground</title>
+<style>
+:root{--bg:#f6f6f4;--fg:#1a1a1a;--mut:#6b6b6b;--line:#dcdcd8;--acc:#2458d6;--ok:#1d8a4b;--warn:#b86a00;--card:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#121212;--fg:#ededed;--mut:#9a9a9a;--line:#2c2c2c;--acc:#7aa2ff;--ok:#4ccd7e;--warn:#f0a940;--card:#1b1b1b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:920px;margin:0 auto;padding:24px 16px 64px}h1{font-size:20px;margin:0 0 4px}h2{font-size:15px;margin:28px 0 8px;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:10px}
+label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}input,textarea,select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--fg);font:inherit}
+textarea{min-height:64px}button{padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--fg);font:inherit;cursor:pointer}
+button.primary{background:var(--acc);border-color:var(--acc);color:#fff}button:disabled{opacity:.5;cursor:default}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:4px 0 8px}.bar>i{display:block;height:100%;background:var(--acc)}
+.muted{color:var(--mut);font-size:13px}.big{font-size:40px;font-weight:700;letter-spacing:-.02em}.ok{color:var(--ok)}.warn{color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600}
+code{font-size:12px;background:var(--line);padding:1px 4px;border-radius:3px}
+</style></head><body><main>
+<h1>Decisions playground</h1><div class="muted" id="model">loading model name…</div>
+<div class="card"><label>Bearer key (kept in this tab only)</label><input id="key" type="password" placeholder="DECISIONS_API_KEY"></div>
+
+<h2>Live turn-taking</h2>
+<div class="card">
+<div class="muted">Talk. At every pause of <span id="pauseMs">350</span> ms the last few seconds go to the model with the turn-completion question: has the person completed their speaking turn? If P(finished) ≥ τ the agent would start replying now; otherwise it holds. Compare with a fixed 500 ms hold after every pause.</div>
+<div class="row" style="margin-top:10px"><button class="primary" id="live">Start mic</button><label style="margin:0">τ <input id="tau" type="number" min="0.5" max="0.99" step="0.05" value="0.8" style="width:80px;display:inline-block"></label>
+<label style="margin:0">pause ms <input id="pause" type="number" min="150" max="1500" step="50" value="350" style="width:90px;display:inline-block"></label><span class="muted" id="liveState">idle</span></div>
+<div class="row" style="margin-top:14px;gap:28px"><div><div class="muted">P(finished) at the last pause</div><div class="big" id="pfin">–</div></div><div><div class="muted">verdict</div><div class="big" id="verdict">–</div></div><div><div class="muted">decision latency</div><div class="big" id="lat">–</div></div></div>
+<div class="bar"><i id="pbar" style="width:0%"></i></div>
+<table><thead><tr><th>t</th><th>clip</th><th>P(finished)</th><th>verdict</th><th>latency</th></tr></thead><tbody id="log"></tbody></table>
+</div>
+
+<h2>Ask anything about a clip</h2>
+<div class="card">
+<div class="row"><button id="rec">Record 8 s</button><input id="file" type="file" accept="audio/*" style="width:auto"><span class="muted" id="clipInfo">no clip</span></div>
+<label>Developer rules (optional)</label><input id="rules" placeholder="e.g. This is a customer support call.">
+<label>Questions, one per line: <code>name | predicate | statement</code> · <code>name | choice | question | opt1, opt2, …</code> · <code>name | score | question | low, mid, high</code></label>
+<textarea id="qs">speech | predicate | A person is speaking in this clip.
+mood | score | How calm or agitated does the speaker sound? | calm, neutral, agitated
+sound | choice | What is the dominant sound? | speech, music, traffic, machinery, silence</textarea>
+<div class="row" style="margin-top:10px"><button class="primary" id="ask">Ask</button><span class="muted" id="askInfo"></span></div>
+<div id="answers"></div>
+</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);const SR=16000;
+fetch('/health').then(r=>r.json()).then(j=>$('model').textContent='model: '+j.model).catch(()=>$('model').textContent='server unreachable');
+function wavFromFloat(f32,sr){const n=f32.length,b=new ArrayBuffer(44+n*2),v=new DataView(b);const w=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
+w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
+for(let i=0;i<n;i++){const s=Math.max(-1,Math.min(1,f32[i]));v.setInt16(44+i*2,s<0?s*32768:s*32767,true)}return new Uint8Array(b)}
+const b64=u8=>{let s='';for(let i=0;i<u8.length;i+=0x8000)s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000));return btoa(s)};
+async function decide(audioB64,questions,rules){const msgs=[];if(rules)msgs.push({role:'developer',content:rules});msgs.push({role:'user',content:[{type:'input_audio',input_audio:{data:audioB64,format:'wav'}}]});
+const t0=performance.now();const r=await fetch('/v1/decisions',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+$('key').value},body:JSON.stringify({input:msgs,questions})});
+const j=await r.json();if(!r.ok)throw new Error(j.error?j.error.message:r.status);j.client_ms=Math.round(performance.now()-t0);return j}
+// ---- live turn-taking: mic -> 16 kHz ring buffer, energy VAD, decision at each pause
+let ctx,src,proc,ring=new Float32Array(SR*10),ringPos=0,filled=0,speaking=false,lastVoice=0,lastDecisionAt=0,live=false,t0=0,busy=false;
+// the turn-completion wording the model knows best; a paraphrased predicate is much less discriminative
+const TURN_Q=[{name:'turn',type:'choice',instructions:'At the end of this audio, has the person completed their speaking turn?',choices:[{value:'incomplete',description:'The speaker has not completed their turn; wait for them to continue'},{value:'complete',description:'The speaker has completed their turn; a response can naturally begin'}]}];
+function lastSeconds(s){const n=Math.min(filled,s*SR),out=new Float32Array(n);for(let i=0;i<n;i++)out[i]=ring[(ringPos-n+i+ring.length)%ring.length];return out}
+async function onPause(){if(busy)return;busy=true;const clip=lastSeconds(8);try{const j=await decide(b64(wavFromFloat(clip,SR)),TURN_Q,null);const p=j.answers[0].probabilities.find(x=>x.value==='complete').probability,tau=+$('tau').value;
+$('pfin').textContent=p.toFixed(2);$('pbar').style.width=(100*p)+'%';const go=p>=tau;$('verdict').textContent=go?'start now':'hold';$('verdict').className='big '+(go?'ok':'warn');$('lat').textContent=j.client_ms+' ms';
+const tr=document.createElement('tr');tr.innerHTML=`<td>${((performance.now()-t0)/1000).toFixed(1)}s</td><td>${(clip.length/SR).toFixed(1)} s</td><td>${p.toFixed(3)}</td><td class="${go?'ok':'warn'}">${go?'start now':'hold'}</td><td>${j.client_ms} ms</td>`;$('log').prepend(tr)}
+catch(e){$('liveState').textContent='error: '+e.message}busy=false}
+$('live').onclick=async()=>{if(live){live=false;proc&&proc.disconnect();src&&src.disconnect();ctx&&ctx.close();$('live').textContent='Start mic';$('liveState').textContent='idle';return}
+const stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true}});ctx=new AudioContext({sampleRate:SR});src=ctx.createMediaStreamSource(stream);proc=ctx.createScriptProcessor(1024,1,1);
+live=true;t0=performance.now();filled=0;ringPos=0;$('live').textContent='Stop mic';$('liveState').textContent='listening';
+proc.onaudioprocess=e=>{const x=e.inputBuffer.getChannelData(0);let en=0;for(let i=0;i<x.length;i++){ring[ringPos]=x[i];ringPos=(ringPos+1)%ring.length;en+=x[i]*x[i]}filled=Math.min(filled+x.length,ring.length);
+const now=performance.now(),rms=Math.sqrt(en/x.length);if(rms>0.015){speaking=true;lastVoice=now;$('liveState').textContent='speech'}
+else if(speaking&&now-lastVoice>+$('pause').value){speaking=false;$('liveState').textContent='pause → deciding';if(now-lastDecisionAt>400){lastDecisionAt=now;onPause()}}};
+src.connect(proc);proc.connect(ctx.destination);$('pauseMs').textContent=$('pause').value};
+$('pause').oninput=()=>$('pauseMs').textContent=$('pause').value;
+// ---- ask anything
+let clipB64=null;
+$('rec').onclick=async()=>{const stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1}});const c=new AudioContext({sampleRate:SR}),s=c.createMediaStreamSource(stream),p=c.createScriptProcessor(1024,1,1);const chunks=[];
+p.onaudioprocess=e=>chunks.push(new Float32Array(e.inputBuffer.getChannelData(0)));s.connect(p);p.connect(c.destination);$('rec').disabled=true;let left=8;$('clipInfo').textContent='recording 8 s…';
+const iv=setInterval(()=>{left--;$('clipInfo').textContent='recording '+left+' s…'},1000);await new Promise(r=>setTimeout(r,8000));clearInterval(iv);p.disconnect();s.disconnect();c.close();stream.getTracks().forEach(t=>t.stop());
+const n=chunks.reduce((a,b)=>a+b.length,0),f=new Float32Array(n);let o=0;for(const ch of chunks){f.set(ch,o);o+=ch.length}clipB64=b64(wavFromFloat(f,SR));$('clipInfo').textContent='mic clip, '+(n/SR).toFixed(1)+' s';$('rec').disabled=false};
+$('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;const buf=await f.arrayBuffer();const c=new AudioContext({sampleRate:SR});const dec=await c.decodeAudioData(buf.slice(0));const ch=dec.getChannelData(0);
+let x=ch;if(dec.sampleRate!==SR){const ratio=dec.sampleRate/SR,n=Math.floor(ch.length/ratio);x=new Float32Array(n);for(let i=0;i<n;i++)x[i]=ch[Math.floor(i*ratio)]}clipB64=b64(wavFromFloat(x,SR));$('clipInfo').textContent=f.name+', '+(x.length/SR).toFixed(1)+' s';c.close()};
+function parseQs(){return $('qs').value.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{const p=l.split('|').map(s=>s.trim());const q={name:p[0],type:p[1],instructions:p[2]};
+if(q.type==='choice'||q.type==='multi')q.choices=(p[3]||'').split(',').map(s=>({value:s.trim()})).filter(c=>c.value);if(q.type==='score')q.levels=(p[3]||'').split(',').map(s=>({label:s.trim()})).filter(c=>c.label);return q})}
+$('ask').onclick=async()=>{if(!clipB64){$('askInfo').textContent='record or choose a clip first';return}$('askInfo').textContent='asking…';
+try{const j=await decide(clipB64,parseQs(),$('rules').value||null);$('askInfo').textContent=j.client_ms+' ms round trip';
+$('answers').innerHTML=j.answers.map(a=>{if(a.type==='predicate')return `<div style="margin-top:12px"><b>${a.name}</b> · P(true) ${a.probability.toFixed(3)}<div class="bar"><i style="width:${100*a.probability}%"></i></div></div>`;
+if(a.type==='refusal')return `<div style="margin-top:12px"><b>${a.name}</b> · refused: ${a.reason}</div>`;
+const head=a.type==='choice'?`choice <b>${a.choice}</b> · confidence ${a.confidence.toFixed(2)}`:a.type==='score'?`score <b>${a.score.toFixed(2)}</b> · confidence ${a.confidence.toFixed(2)}`:`selected: ${a.selected.join(', ')||'none'}`;
+return `<div style="margin-top:12px"><b>${a.name}</b> · ${head}`+a.probabilities.map(p=>`<div class="muted" style="margin-top:4px">${p.label||p.value} · ${p.probability.toFixed(3)}</div><div class="bar"><i style="width:${100*p.probability}%"></i></div>`).join('')+'</div>'}).join('')}
+catch(e){$('askInfo').textContent='error: '+e.message}};
+</script></body></html>

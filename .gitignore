@@ -1,0 +1,31 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# model files and device builds: download or convert them, never commit them
+models/
+*.safetensors
+*.mlpackage/
+*.mlmodelc/
+*.litertlm
+*.onnx
+*.bin
+*.npy
+*.pcm
+# the synthetic test clips the iOS app bundles (raw float32 PCM from apps/android/fast/make_clips.py, under 1 MB each)
+!apps/ios/Cascade/Cascade/Resources/synth_*.pcm
+*.gguf
+libdecide.so
+
+# Apple / Android build output
+xcuserdata/
+DerivedData/
+.DS_Store
+.gradle/
+local.properties

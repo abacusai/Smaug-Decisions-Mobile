@@ -1,0 +1,79 @@
+{
+ "version": 1,
+ "base_url": "https://huggingface.co/abacusai/Smaug-Decisions-LiteRT/resolve/main/",
+ "variants": [
+  {
+   "variant": "full_vis560",
+   "file": "smaug-decisions-full-vis560.litertlm",
+   "bytes": 3449280464,
+   "sha256": "1bc9c8a3d9c0839cc4be126735516ef33350abdab66197bfb08128f7a9c131c1",
+   "modalities": [
+    "text",
+    "audio",
+    "image"
+   ],
+   "vision_tokens": 560,
+   "url": "https://huggingface.co/abacusai/Smaug-Decisions-LiteRT/resolve/main/smaug-decisions-full-vis560.litertlm"
+  },
+  {
+   "variant": "full_vis280",
+   "file": "smaug-decisions-full-vis280.litertlm",
+   "bytes": 3449280464,
+   "sha256": "385e567a43393151fcc05fe5a8b529a0324efee5414aaccf3cb4a229cde943fc",
+   "modalities": [
+    "text",
+    "audio",
+    "image"
+   ],
+   "vision_tokens": 280,
+   "url": "https://huggingface.co/abacusai/Smaug-Decisions-LiteRT/resolve/main/smaug-decisions-full-vis280.litertlm"
+  },
+  {
+   "variant": "noaudio_vis560",
+   "file": "smaug-decisions-noaudio-vis560.litertlm",
+   "bytes": 3147634640,
+   "sha256": "592a199ac79ed8850a69d773545e860dea2a8255df5107030d6cc7e5406054c5",
+   "modalities": [
+    "text",
+    "image"
+   ],
+   "vision_tokens": 560,
+   "url": "https://huggingface.co/abacusai/Smaug-Decisions-LiteRT/resolve/main/smaug-decisions-noaudio-vis560.litertlm"
+  },
+  {
+   "variant": "noaudio_vis280",
+   "file": "smaug-decisions-noaudio-vis280.litertlm",
+   "bytes": 3147634640,
+   "sha256": "f1164fecb2e85689b78c3b68b975388b3ccf16afdd4e290a486d768142bd9532",
+   "modalities": [
+    "text",
+    "image"
+   ],
+   "vision_tokens": 280,
+   "url": "https://huggingface.co/abacusai/Smaug-Decisions-LiteRT/resolve/main/smaug-decisions-noaudio-vis280.litertlm"
+  },
+  {
+   "variant": "novision",
+   "file": "smaug-decisions-novision.litertlm",
+   "bytes": 3275757520,
+   "sha256": "b091dc17c8c0d583377548e779b4fbcd040ae1c23e1dc9cb5a0710fe4ec2a7af",
+   "modalities": [
+    "text",
+    "audio"
+   ],
+   "vision_tokens": null,
+   "url": "https://huggingface.co/abacusai/Smaug-Decisions-LiteRT/resolve/main/smaug-decisions-novision.litertlm"
+  },
+  {
+   "variant": "textonly",
+   "file": "smaug-decisions-textonly.litertlm",
+   "bytes": 2974111696,
+   "sha256": "eac25286e9b9963aae0d0753e31403b6c6348eb67d694857a77606142d287511",
+   "modalities": [
+    "text"
+   ],
+   "vision_tokens": null,
+   "url": "https://huggingface.co/abacusai/Smaug-Decisions-LiteRT/resolve/main/smaug-decisions-textonly.litertlm"
+  }
+ ]
+}

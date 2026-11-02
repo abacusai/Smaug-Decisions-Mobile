@@ -1,0 +1,456 @@
+{
+ "gguf": "smaug-decisions-Q4_K_M-imat.gguf",
+ "mmproj": "mmproj-smaug-decisions-q8_0.gguf",
+ "b": 8.010554313659668,
+ "threads": 4,
+ "generated_by": "llama_decide.py (Python ctypes, same decide_core) on x86_64 CPU, 4 threads",
+ "hf_reference": "ref_hf_bf16.json",
+ "cases": [
+  {
+   "input": "The order never arrived and support stopped answering my emails.",
+   "question": "How upset is the customer?",
+   "options": [
+    "calm",
+    "annoyed",
+    "angry"
+   ],
+   "id": "c00",
+   "kind": "text",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: The order never arrived and support stopped answering my emails.\nQuestion: How upset is the customer?\nA) calm\nB) annoyed\nC) angry\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 82,
+   "z": [
+    26.76970863342285,
+    29.14402198791504,
+    29.438644409179688
+   ],
+   "p": [
+    0.03821425754778645,
+    0.41055998081786604,
+    0.5512257616343474
+   ],
+   "ms": 4424.467579126358,
+   "p_hf": [
+    0.0411219485104084,
+    0.37575763463974,
+    0.5831204056739807
+   ]
+  },
+  {
+   "input": "Can I change the delivery address after I paid?",
+   "question": "What is the user asking about?",
+   "options": [
+    "billing",
+    "shipping",
+    "returns",
+    "account",
+    "other"
+   ],
+   "descriptions": [
+    "charges, refunds, invoices",
+    "delivery, tracking, addresses",
+    null,
+    "login, password, profile",
+    null
+   ],
+   "id": "c02",
+   "kind": "text",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: Can I change the delivery address after I paid?\nQuestion: What is the user asking about?\nA) billing — charges, refunds, invoices\nB) shipping — delivery, tracking, addresses\nC) returns\nD) account — login, password, profile\nE) other\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 108,
+   "z": [
+    22.975011825561523,
+    28.36435317993164,
+    21.907012939453125,
+    21.373046875,
+    23.266727447509766
+   ],
+   "p": [
+    0.004505661895527306,
+    0.9870060403103531,
+    0.001548576185555862,
+    0.0009078917317525707,
+    0.0060318298768112875
+   ],
+   "ms": 4588.177925825119,
+   "p_hf": [
+    0.004516113083809614,
+    0.9863713383674622,
+    0.001491285627707839,
+    0.0008614896214567125,
+    0.0067596822045743465
+   ]
+  },
+  {
+   "input": "I love the new dashboard but the export button is broken and the dark mode is too dark.",
+   "question": "Which topics does the feedback mention?",
+   "options": [
+    "praise",
+    "bug report",
+    "feature request",
+    "design complaint",
+    "pricing"
+   ],
+   "multi": true,
+   "id": "c03",
+   "kind": "text",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: I love the new dashboard but the export button is broken and the dark mode is too dark.\nQuestion: Which topics does the feedback mention? Select all that apply.\nA) praise\nB) bug report\nC) feature request\nD) design complaint\nE) pricing\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "tokens": 108,
+   "z": [
+    10.560288429260254,
+    11.30911636352539,
+    6.242754936218262,
+    10.10209846496582,
+    1.0740442276000977
+   ],
+   "p": [
+    0.9275556502571951,
+    0.9643794476255163,
+    0.14581621135423795,
+    0.8900785944037565,
+    0.0009707114817591654
+   ],
+   "ms": 4494.873532772064,
+   "p_hf": [
+    0.924869179725647,
+    0.9509462714195251,
+    0.12920694053173065,
+    0.8517131805419922,
+    0.0010290389182046056
+   ]
+  },
+  {
+   "input": "Transfer $4,900 to account 88213 today, it is urgent, the CEO approved it.",
+   "question": "Should this request be escalated for fraud review?",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "rules": "Escalate any payment request that combines urgency with an unusual recipient.",
+   "id": "c06",
+   "kind": "text",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nRules: Escalate any payment request that combines urgency with an unusual recipient.\nInput: Transfer $4,900 to account 88213 today, it is urgent, the CEO approved it.\nQuestion: Should this request be escalated for fraud review?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 112,
+   "z": [
+    29.418012619018555,
+    27.141368865966797
+   ],
+   "p": [
+    0.9069241234871078,
+    0.09307587651289219
+   ],
+   "ms": 4922.803618192673,
+   "p_hf": [
+    0.9145926237106323,
+    0.08540739864110947
+   ]
+  },
+  {
+   "input": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+   "question": "Is the text repetitive?",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "id": "c10",
+   "kind": "text",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. \nQuestion: Is the text repetitive?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 467,
+   "z": [
+    27.994060516357422,
+    22.376935958862305
+   ],
+   "p": [
+    0.9963780873818645,
+    0.0036219126181355438
+   ],
+   "ms": 11885.621552944183,
+   "p_hf": [
+    0.997092604637146,
+    0.0029074193444103003
+   ]
+  },
+  {
+   "input": "speech_question.wav",
+   "question": "Is the speaker asking a question?",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "id": "c11",
+   "kind": "audio",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Is the speaker asking a question?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 163,
+   "z": [
+    28.42353630065918,
+    23.660140991210938
+   ],
+   "p": [
+    0.9915356804854366,
+    0.008464319514563287
+   ],
+   "ms": 15256.32925915718,
+   "p_hf": [
+    0.9948699474334717,
+    0.005130101460963488
+   ]
+  },
+  {
+   "input": "speech_angry.wav",
+   "question": "How does the speaker sound?",
+   "options": [
+    "calm",
+    "happy",
+    "frustrated",
+    "sad"
+   ],
+   "id": "c13",
+   "kind": "audio",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: How does the speaker sound?\nA) calm\nB) happy\nC) frustrated\nD) sad\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 169,
+   "z": [
+    25.34581756591797,
+    23.441627502441406,
+    28.904050827026367,
+    24.400081634521484
+   ],
+   "p": [
+    0.02729372011366275,
+    0.0040652147872113475,
+    0.9580403579416065,
+    0.010600707157519396
+   ],
+   "ms": 16290.666153907776,
+   "p_hf": [
+    0.024436358362436295,
+    0.003061457769945264,
+    0.9637565016746521,
+    0.008745619095861912
+   ]
+  },
+  {
+   "input": "tone_440.wav",
+   "question": "Which sounds are present?",
+   "options": [
+    "speech",
+    "music",
+    "a pure tone",
+    "noise",
+    "silence"
+   ],
+   "multi": true,
+   "id": "c14",
+   "kind": "audio",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Which sounds are present? Select all that apply.\nA) speech\nB) music\nC) a pure tone\nD) noise\nE) silence\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "tokens": 164,
+   "z": [
+    4.162053108215332,
+    9.578208923339844,
+    8.440696716308594,
+    6.645161151885986,
+    7.99381160736084
+   ],
+   "p": [
+    0.02086694518255863,
+    0.8274489972439765,
+    0.6059076723567013,
+    0.2033651702152771,
+    0.49581442119933405
+   ],
+   "ms": 15969.095290899277,
+   "p_hf": [
+    0.020798079669475555,
+    0.8062180876731873,
+    0.6375677585601807,
+    0.18989865481853485,
+    0.5423522591590881
+   ]
+  },
+  {
+   "input": "silence.wav",
+   "question": "Is the recording silent?",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "id": "c17",
+   "kind": "audio",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Is the recording silent?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 119,
+   "z": [
+    29.06463623046875,
+    26.47039794921875
+   ],
+   "p": [
+    0.9304898434295742,
+    0.06951015657042571
+   ],
+   "ms": 13002.283394813538,
+   "p_hf": [
+    0.9038118124008179,
+    0.09618820250034332
+   ]
+  },
+  {
+   "input": "house.png",
+   "question": "Which objects are in the picture?",
+   "options": [
+    "house",
+    "sun",
+    "car",
+    "tree",
+    "person"
+   ],
+   "multi": true,
+   "id": "c18",
+   "kind": "image",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|image|>\nQuestion: Which objects are in the picture? Select all that apply.\nA) house\nB) sun\nC) car\nD) tree\nE) person\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "tokens": 629,
+   "z": [
+    11.785321235656738,
+    13.465469360351562,
+    1.260974645614624,
+    6.995704650878906,
+    1.510606288909912
+   ],
+   "p": [
+    0.9775721129972028,
+    0.9957429599058671,
+    0.00117000137564683,
+    0.26603183712575756,
+    0.0015012601659502966
+   ],
+   "ms": 45867.88614106178,
+   "p_hf": [
+    0.9748099446296692,
+    0.9959949254989624,
+    0.00047884718514978886,
+    0.24563321471214294,
+    0.0025287370663136244
+   ]
+  },
+  {
+   "input": "earth.png",
+   "question": "Is this a photo taken from space?",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "id": "c21",
+   "kind": "image",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|image|>\nQuestion: Is this a photo taken from space?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 601,
+   "z": [
+    28.917251586914062,
+    26.860593795776367
+   ],
+   "p": [
+    0.8866186248000284,
+    0.11338137519997171
+   ],
+   "ms": 43167.79337501526,
+   "p_hf": [
+    0.8998309969902039,
+    0.10016895085573196
+   ]
+  },
+  {
+   "input": "earth.jpg",
+   "question": "Is this a photo taken from space?",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "id": "c21j",
+   "kind": "image",
+   "decoder_row": true,
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|image|>\nQuestion: Is this a photo taken from space?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 601,
+   "z": [
+    28.917251586914062,
+    26.860593795776367
+   ],
+   "p": [
+    0.8866186248000284,
+    0.11338137519997171
+   ],
+   "ms": 43167.79337501526,
+   "p_hf": [
+    0.8998309969902039,
+    0.10016895085573196
+   ]
+  },
+  {
+   "id": "u00",
+   "kind": "text",
+   "input": "Loved the color 😍😍 but the box arrived crushed 😡📦",
+   "question": "What is the overall sentiment?",
+   "options": [
+    "positive",
+    "negative",
+    "mixed"
+   ],
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: Loved the color 😍😍 but the box arrived crushed 😡📦\nQuestion: What is the overall sentiment?\nA) positive\nB) negative\nC) mixed\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 84,
+   "z": [
+    26.63416862487793,
+    27.84673309326172,
+    29.257827758789062
+   ],
+   "p": [
+    0.05510196809498129,
+    0.18525808417716366,
+    0.759639947727855
+   ],
+   "ms": 5435.867788076401
+  },
+  {
+   "id": "u01",
+   "kind": "text",
+   "input": "明日の会議は午後3時に変更になりました。資料を持ってきてください。",
+   "question": "Which fields are present?",
+   "options": [
+    "date",
+    "time",
+    "location",
+    "attachment"
+   ],
+   "multi": true,
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: 明日の会議は午後3時に変更になりました。資料を持ってきてください。\nQuestion: Which fields are present? Select all that apply.\nA) date\nB) time\nC) location\nD) attachment\nAnswer with the letters of all options that apply.<turn|>\n<|turn>model\n",
+   "tokens": 95,
+   "z": [
+    6.966708660125732,
+    12.756510734558105,
+    2.1372828483581543,
+    5.584765434265137
+   ],
+   "p": [
+    0.26040865433165505,
+    0.9913880599266975,
+    0.0028057590575054575,
+    0.08122718661938975
+   ],
+   "ms": 5013.17963886261
+  },
+  {
+   "id": "u02",
+   "kind": "text",
+   "input": "Ça marche 👍🏽, à demain!",
+   "question": "Does this message need a reply?",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "rules": "Short acknowledgements never need a reply.",
+   "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nRules: Short acknowledgements never need a reply.\nInput: Ça marche 👍🏽, à demain!\nQuestion: Does this message need a reply?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+   "tokens": 88,
+   "z": [
+    26.873458862304688,
+    29.294464111328125
+   ],
+   "p": [
+    0.08158490166473537,
+    0.9184150983352647
+   ],
+   "ms": 5052.644016981125
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+Smaug-Decisions Mobile
+Copyright 2026 Abacus.AI
+
+This product includes software developed at Abacus.AI (https://abacus.ai).
+
+The Smaug-Decisions model is a fine-tune of Gemma 4 E4B-it and the Smaug-Audio-Decisions-0.7B model is a fine-tune of EmbeddingGemma 2,
+both by Google and released under the Apache License, Version 2.0. Gemma is a trademark of Google LLC.
+
+The Core ML export reuses the Gemma 4 audio encoder architecture as implemented in Hugging Face Transformers
+(Apache License, Version 2.0).

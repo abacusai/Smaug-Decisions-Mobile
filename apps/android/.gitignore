@@ -1,0 +1,23 @@
+# Gradle / Android Studio build outputs and machine-local settings
+.gradle/
+.kotlin/
+build/
+app/build/
+.cxx/
+app/.cxx/
+local.properties
+*.apk
+*.aab
+*.so
+*.log
+.idea/
+*.iml
+captures/
+# model files are large and live outside git (see README); the app expects them in assets/fast or on the device
+app/src/main/assets/fast/*.onnx
+app/src/main/assets/fast/*.bin
+*.gguf
+fastpack/src/main/assets
+fastpack/build/
+runtime/.build/
+litert/

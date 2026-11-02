@@ -1,0 +1,289 @@
+[
+ {
+  "input": "The order never arrived and support stopped answering my emails.",
+  "question": "How upset is the customer?",
+  "options": [
+   "calm",
+   "annoyed",
+   "angry"
+  ],
+  "id": "c00",
+  "kind": "text"
+ },
+ {
+  "input": "Thanks so much, the replacement works perfectly!",
+  "question": "Does this message need a reply from a human agent?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "id": "c01",
+  "kind": "text"
+ },
+ {
+  "input": "Can I change the delivery address after I paid?",
+  "question": "What is the user asking about?",
+  "options": [
+   "billing",
+   "shipping",
+   "returns",
+   "account",
+   "other"
+  ],
+  "descriptions": [
+   "charges, refunds, invoices",
+   "delivery, tracking, addresses",
+   null,
+   "login, password, profile",
+   null
+  ],
+  "id": "c02",
+  "kind": "text"
+ },
+ {
+  "input": "I love the new dashboard but the export button is broken and the dark mode is too dark.",
+  "question": "Which topics does the feedback mention?",
+  "options": [
+   "praise",
+   "bug report",
+   "feature request",
+   "design complaint",
+   "pricing"
+  ],
+  "multi": true,
+  "id": "c03",
+  "kind": "text"
+ },
+ {
+  "input": "Meeting moved to 3pm Thursday, bring the Q3 slides.",
+  "question": "Which fields are present?",
+  "options": [
+   "date",
+   "time",
+   "location",
+   "attachment",
+   "person"
+  ],
+  "multi": true,
+  "id": "c04",
+  "kind": "text"
+ },
+ {
+  "input": "hey r u free 2nite?",
+  "question": "Is this message spam?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "rules": "Messages from saved contacts are never spam.",
+  "context": "Sender is a saved contact.",
+  "id": "c05",
+  "kind": "text"
+ },
+ {
+  "input": "Transfer $4,900 to account 88213 today, it is urgent, the CEO approved it.",
+  "question": "Should this request be escalated for fraud review?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "rules": "Escalate any payment request that combines urgency with an unusual recipient.",
+  "id": "c06",
+  "kind": "text"
+ },
+ {
+  "input": "The patient reports mild headache, no fever, normal blood pressure.",
+  "question": "What triage level fits?",
+  "options": [
+   "routine",
+   "urgent",
+   "emergency"
+  ],
+  "id": "c07",
+  "kind": "text"
+ },
+ {
+  "input": "def add(a, b): return a - b",
+  "question": "Does the code do what its name says?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "id": "c08",
+  "kind": "text"
+ },
+ {
+  "input": "Je voudrais annuler mon abonnement.",
+  "question": "Which language is the message in?",
+  "options": [
+   "English",
+   "French",
+   "Spanish",
+   "German"
+  ],
+  "id": "c09",
+  "kind": "text"
+ },
+ {
+  "input": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+  "question": "Is the text repetitive?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "id": "c10",
+  "kind": "text"
+ },
+ {
+  "input": "speech_question.wav",
+  "question": "Is the speaker asking a question?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "id": "c11",
+  "kind": "audio"
+ },
+ {
+  "input": "speech_unfinished.wav",
+  "question": "Has the speaker finished their turn?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "id": "c12",
+  "kind": "audio"
+ },
+ {
+  "input": "speech_angry.wav",
+  "question": "How does the speaker sound?",
+  "options": [
+   "calm",
+   "happy",
+   "frustrated",
+   "sad"
+  ],
+  "id": "c13",
+  "kind": "audio"
+ },
+ {
+  "input": "tone_440.wav",
+  "question": "Which sounds are present?",
+  "options": [
+   "speech",
+   "music",
+   "a pure tone",
+   "noise",
+   "silence"
+  ],
+  "multi": true,
+  "id": "c14",
+  "kind": "audio"
+ },
+ {
+  "input": "beeps.wav",
+  "question": "What is this sound most likely?",
+  "options": [
+   "an alarm or beeping",
+   "a dog barking",
+   "a person talking",
+   "rain"
+  ],
+  "id": "c15",
+  "kind": "audio"
+ },
+ {
+  "input": "noise.wav",
+  "question": "Is anyone speaking?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "id": "c16",
+  "kind": "audio"
+ },
+ {
+  "input": "silence.wav",
+  "question": "Is the recording silent?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "id": "c17",
+  "kind": "audio"
+ },
+ {
+  "input": "house.png",
+  "question": "Which objects are in the picture?",
+  "options": [
+   "house",
+   "sun",
+   "car",
+   "tree",
+   "person"
+  ],
+  "multi": true,
+  "id": "c18",
+  "kind": "image"
+ },
+ {
+  "input": "shapes.png",
+  "question": "How many shapes are there?",
+  "options": [
+   "one",
+   "two",
+   "three",
+   "four"
+  ],
+  "id": "c19",
+  "kind": "image"
+ },
+ {
+  "input": "sign.png",
+  "question": "What does the sign warn about?",
+  "options": [
+   "wet floor",
+   "high voltage",
+   "falling rocks",
+   "no entry"
+  ],
+  "id": "c20",
+  "kind": "image"
+ },
+ {
+  "input": "earth.jpg",
+  "question": "Is this a photo taken from space?",
+  "options": [
+   "Yes",
+   "No"
+  ],
+  "id": "c21",
+  "kind": "image"
+ },
+ {
+  "input": "moon.jpg",
+  "question": "Which apply to the picture?",
+  "options": [
+   "a person",
+   "a spacesuit",
+   "an animal",
+   "water",
+   "a flag"
+  ],
+  "multi": true,
+  "id": "c22",
+  "kind": "image"
+ },
+ {
+  "input": "portrait.jpg",
+  "question": "What kind of image is this?",
+  "options": [
+   "photograph",
+   "painting",
+   "diagram",
+   "screenshot"
+  ],
+  "id": "c23",
+  "kind": "image"
+ }
+]

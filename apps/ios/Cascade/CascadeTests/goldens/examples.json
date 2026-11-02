@@ -1,0 +1,31 @@
+[
+ {
+  "id": "c06",
+  "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nRules: Escalate any payment request that combines urgency with an unusual recipient.\nInput: Transfer $4,900 to account 88213 today, it is urgent, the CEO approved it.\nQuestion: Should this request be escalated for fraud review?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+  "p": [
+   0.9131705164909363,
+   0.0868295356631279
+  ],
+  "tokens": 112
+ },
+ {
+  "id": "c20",
+  "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|image|>\nQuestion: What does the sign warn about?\nA) wet floor\nB) high voltage\nC) falling rocks\nD) no entry\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+  "p": [
+   0.9997791647911072,
+   9.946018690243363e-05,
+   4.3097832531202585e-05,
+   7.820713653927669e-05
+  ],
+  "tokens": 353
+ },
+ {
+  "id": "c12",
+  "prompt": "<bos><|turn>user\nYou make decisions for apps. Read the rules, the context and the input, then answer the question by choosing from the lettered options.\nInput: <|audio|>\nQuestion: Has the speaker finished their turn?\nA) Yes\nB) No\nAnswer with the letter of the best option.<turn|>\n<|turn>model\n",
+  "p": [
+   0.009473283775150776,
+   0.9905266761779785
+  ],
+  "tokens": 186
+ }
+]

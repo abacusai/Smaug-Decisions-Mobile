@@ -1,0 +1,262 @@
+[
+ {
+  "name": "scene_640x480",
+  "w": 640,
+  "h": 480,
+  "tw": 1296,
+  "th": 960,
+  "sha256": "b0cc92f4aced3b8176176fb54d80cee7c446dee30ddb2e67e68a54862aee3167"
+ },
+ {
+  "name": "scene_640x480",
+  "w": 640,
+  "h": 480,
+  "tw": 213,
+  "th": 240,
+  "plain": true,
+  "sha256": "e9cdacf44c1f4db0cba14273657bc693c7c3c8eeed85b23d6bea6d39045cbcd6"
+ },
+ {
+  "name": "scene_640x480",
+  "w": 640,
+  "h": 480,
+  "tw": 1281,
+  "th": 480,
+  "plain": true,
+  "sha256": "21e2905a44b593dc6be10d02735f80cca18f34cb4af2a0f5a06d8f93baa6b2f9"
+ },
+ {
+  "name": "scene_1920x1080",
+  "w": 1920,
+  "h": 1080,
+  "tw": 1488,
+  "th": 816,
+  "sha256": "f15181091d6b11c940e40cffb8cfb91093bf21ddf93dc5493b57f6155cc492b5"
+ },
+ {
+  "name": "scene_1920x1080",
+  "w": 1920,
+  "h": 1080,
+  "tw": 640,
+  "th": 540,
+  "plain": true,
+  "sha256": "aa56ec130dd48147ed13d228bba11a270054287acd2065366844288656625d4d"
+ },
+ {
+  "name": "scene_1920x1080",
+  "w": 1920,
+  "h": 1080,
+  "tw": 3841,
+  "th": 1080,
+  "plain": true,
+  "sha256": "da992011c9bdc33f6e08a44503cb64c6651907953063d4c6aa334cbcd3aa3fc6"
+ },
+ {
+  "name": "scene_37x91",
+  "w": 37,
+  "h": 91,
+  "tw": 720,
+  "th": 1776,
+  "sha256": "9af32cdbccc8f95ba06ee4e0eced4b5e1f5a9f576f134a24f9d38047fd5939ab"
+ },
+ {
+  "name": "scene_37x91",
+  "w": 37,
+  "h": 91,
+  "tw": 12,
+  "th": 45,
+  "plain": true,
+  "sha256": "27a1c667196b1ff2debca63993e7f7cbeb4d973158b684487808a83682ff6bda"
+ },
+ {
+  "name": "scene_37x91",
+  "w": 37,
+  "h": 91,
+  "tw": 75,
+  "th": 91,
+  "plain": true,
+  "sha256": "a3e56e6039f9a39fc7820b01fecda5cefe55b4dd5920cf4e961afe7f77e584ff"
+ },
+ {
+  "name": "noise_64x48",
+  "w": 64,
+  "h": 48,
+  "tw": 1296,
+  "th": 960,
+  "sha256": "0a1c59277fa983ae27b567057b37c7e4bf517a0977632117dcd78b9b7fd41aee"
+ },
+ {
+  "name": "noise_64x48",
+  "w": 64,
+  "h": 48,
+  "tw": 21,
+  "th": 24,
+  "plain": true,
+  "sha256": "db1d4e8f34e26789c4cc7734bc0ecd49fcd3344bb5515c7323044636662e1c3a"
+ },
+ {
+  "name": "noise_64x48",
+  "w": 64,
+  "h": 48,
+  "tw": 129,
+  "th": 48,
+  "plain": true,
+  "sha256": "7735045712bd8f429fba542a5a64537dee1e6cbb9d72f3319b88ce4d26399cd6"
+ },
+ {
+  "name": "noise_13x7",
+  "w": 13,
+  "h": 7,
+  "tw": 1536,
+  "th": 816,
+  "sha256": "f1da7ca7947502d1b0018144e67a04dba327f21264d75be0be8214373c82f20c"
+ },
+ {
+  "name": "noise_13x7",
+  "w": 13,
+  "h": 7,
+  "tw": 4,
+  "th": 3,
+  "plain": true,
+  "sha256": "7d39105d0dd5b9017144c4fac131eae1c4ec24fd8af92019b2cdf5d7f0d9db8d"
+ },
+ {
+  "name": "noise_13x7",
+  "w": 13,
+  "h": 7,
+  "tw": 27,
+  "th": 7,
+  "plain": true,
+  "sha256": "75e63a616827866f3c3fc4f27d4f34f102fd05d40a536385324a393ee4dafada"
+ },
+ {
+  "name": "noise_800x60",
+  "w": 800,
+  "h": 60,
+  "tw": 4128,
+  "th": 288,
+  "sha256": "b50518657e413afa457ad8984a94c196e5dda42528f0ba0e7d156c58adec6d4f"
+ },
+ {
+  "name": "noise_800x60",
+  "w": 800,
+  "h": 60,
+  "tw": 266,
+  "th": 30,
+  "plain": true,
+  "sha256": "5622cb582985590a94b478f4222962b849eb9a24e9f739773a386e18ae43b71a"
+ },
+ {
+  "name": "noise_800x60",
+  "w": 800,
+  "h": 60,
+  "tw": 1601,
+  "th": 60,
+  "plain": true,
+  "sha256": "6681f83d5f310e10bc7bb82edc4092fecd0257c6e09f9dd711e4501c9066c804"
+ },
+ {
+  "name": "noise_250x250",
+  "w": 250,
+  "h": 250,
+  "tw": 1104,
+  "th": 1104,
+  "sha256": "495fcf7294bb1f7ce428784b56a0b232b205950f3a06812de1af3505eb11b15c"
+ },
+ {
+  "name": "noise_250x250",
+  "w": 250,
+  "h": 250,
+  "tw": 83,
+  "th": 125,
+  "plain": true,
+  "sha256": "4d8950858e590cea78805fe7386cc2473d8a4a34fa6df0b98c738e856a6d7252"
+ },
+ {
+  "name": "noise_250x250",
+  "w": 250,
+  "h": 250,
+  "tw": 501,
+  "th": 250,
+  "plain": true,
+  "sha256": "1a26d1a7ad8e5d1af8ed7c9a545abc593975e6232894a80ce56cad567f338186"
+ },
+ {
+  "name": "scene_768x816",
+  "w": 768,
+  "h": 816,
+  "tw": 1056,
+  "th": 1152,
+  "sha256": "2d466376b3a57b469cc9533963af2dbfc7c5aa821b379b65dade5bdd6d1c0093"
+ },
+ {
+  "name": "scene_768x816",
+  "w": 768,
+  "h": 816,
+  "tw": 256,
+  "th": 408,
+  "plain": true,
+  "sha256": "5e5d259435bc2d2cb4476cc5b3fc2a2a4cec5edb711b5f1322f1b0f26f68544b"
+ },
+ {
+  "name": "scene_768x816",
+  "w": 768,
+  "h": 816,
+  "tw": 1537,
+  "th": 816,
+  "plain": true,
+  "sha256": "d4a35b75658eba6311958fa7bfca8bfdac0108fa45919f2b45b54d3990fc6f7a"
+ },
+ {
+  "name": "noise_2000x30",
+  "w": 2000,
+  "h": 30,
+  "tw": 9264,
+  "th": 96,
+  "sha256": "e6529372569f8922f47a338ed55e6fbea1d7dd8c9319b8005a5e63426a0b5226"
+ },
+ {
+  "name": "noise_2000x30",
+  "w": 2000,
+  "h": 30,
+  "tw": 666,
+  "th": 15,
+  "plain": true,
+  "sha256": "a7d066684b04ce0aefb244660d59ae9fd55dfd9810cb72160ad1809e86d39f7e"
+ },
+ {
+  "name": "noise_2000x30",
+  "w": 2000,
+  "h": 30,
+  "tw": 4001,
+  "th": 30,
+  "plain": true,
+  "sha256": "e7e0f97f86574e789663c049bb633dfde544c86320d64afa7243cd8881a4bee8"
+ },
+ {
+  "name": "scene_4000x3000",
+  "w": 4000,
+  "h": 3000,
+  "tw": 1296,
+  "th": 960,
+  "sha256": "09d8255838f7ae76fff8713cdcd55b770ebfbfb2b5fba7db1efd4cc4cdd1af0a"
+ },
+ {
+  "name": "scene_4000x3000",
+  "w": 4000,
+  "h": 3000,
+  "tw": 1333,
+  "th": 1500,
+  "plain": true,
+  "sha256": "d61a5539f945d98e599589bb6098e28efb2667fa13d12f0bb71073a7cd85a056"
+ },
+ {
+  "name": "scene_4000x3000",
+  "w": 4000,
+  "h": 3000,
+  "tw": 8001,
+  "th": 3000,
+  "plain": true,
+  "sha256": "aa26ad5965dab9f98bfed7fc997b02849e6244663cdce0073c560a98546f8b2c"
+ }
+]

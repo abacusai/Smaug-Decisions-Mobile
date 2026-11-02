@@ -1,0 +1,1 @@
+Inter (res/font/inter_*.ttf), copyright the Inter Project Authors (https://github.com/rsms/inter), SIL Open Font License 1.1 (https://openfontlicense.org). Copied from the ChatLLM Android app, whose type system this app follows.

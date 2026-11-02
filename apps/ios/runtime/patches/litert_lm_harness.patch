@@ -1,0 +1,176 @@
+diff --git a/c/BUILD b/c/BUILD
+index b50ec2f..5cbbe40 100644
+--- a/c/BUILD
++++ b/c/BUILD
+@@ -592,6 +592,9 @@ cc_binary(
+         ":experimental_headers",
+         ":model_info_headers",
+         "//runtime/engine:engine_impl_selected",
++        "//runtime/components:scoring_cpu_util",
++        "//runtime/conversation/model_data_processor:model_data_processor",
++        "//runtime/conversation/model_data_processor:model_data_processor_factory",
+     ] + select({
+         "//conditions:default": [],
+     }),
+diff --git a/c/conversation.cc b/c/conversation.cc
+index 95f9a6d..286dc74 100644
+--- a/c/conversation.cc
++++ b/c/conversation.cc
+@@ -15,7 +15,10 @@
+ #include "c/conversation.h"
+ 
+ #include <cstddef>
++#include <cmath>
+ #include <cstring>
++#include <variant>
++#include <vector>
+ #include <memory>
+ #include <optional>
+ #include <string>
+@@ -38,6 +41,8 @@
+ #include "runtime/conversation/io_types.h"
+ #include "runtime/conversation/model_data_processor/config_registry.h"
+ #include "runtime/conversation/model_data_processor/gemma4_data_processor_config.h"
++#include "runtime/conversation/model_data_processor/model_data_processor_factory.h"
++#include "runtime/components/scoring_cpu_util.h"
+ #include "runtime/conversation/thinking_config.h"
+ #include "runtime/engine/engine_settings.h"
+ #include "runtime/executor/llm_executor_settings.h"
+@@ -790,4 +795,84 @@ LiteRtLmStatusCode litert_lm_conversation_get_token_count(
+   return kLiteRtLmStatusOk;
+ }
+ 
++
++// [harness patch] Prefills `rendered_prompt` (no chat template is applied; the
++// session adds BOS on the first turn) into a raw session. <|image|> / <|audio|>
++// placeholders are replaced by the model data processor exactly as the
++// Conversation API does, using `media_json`, a JSON array of
++// {"type": "image"|"audio", "path": "..."} items in prompt order.
++// visual_token_budget <= 0 keeps the model default.
++LITERT_LM_C_API_EXPORT
++LiteRtLmStatusCode litert_lm_experimental_session_run_prefill_multimodal(
++    LiteRtLmSession* session, LiteRtLmEngine* engine,
++    const char* rendered_prompt, const char* media_json,
++    int visual_token_budget) {
++  if (!session || !session->session || !engine || !engine->engine ||
++      !rendered_prompt) {
++    return litert::lm::c::ReturnError(absl::StatusCode::kInvalidArgument,
++                                      "Invalid session, engine or prompt.");
++  }
++  const auto& model_type =
++      session->session->GetSessionConfig().GetLlmModelType();
++  auto config = litert::lm::CreateDataProcessorConfigFromLlmModelType(model_type);
++  if (!config.ok()) return litert::lm::c::ToCStatus(config.status());
++  auto processor = litert::lm::CreateModelDataProcessor(
++      *config, std::nullopt, &engine->engine->GetTokenizer());
++  if (!processor.ok()) return litert::lm::c::ToCStatus(processor.status());
++  nlohmann::ordered_json content = nlohmann::ordered_json::array();
++  if (media_json && *media_json) {
++    content = nlohmann::ordered_json::parse(media_json, nullptr, false);
++    if (content.is_discarded() || !content.is_array()) {
++      return litert::lm::c::ReturnError(absl::StatusCode::kInvalidArgument,
++                                        "media_json must be a JSON array.");
++    }
++  }
++  nlohmann::ordered_json messages = nlohmann::ordered_json::array();
++  messages.push_back({{"role", "user"}, {"content", content}});
++  litert::lm::DataProcessorArguments args = std::monostate();
++  if (visual_token_budget > 0 && model_type.has_gemma4()) {
++    litert::lm::Gemma4DataProcessorArguments g4;
++    g4.visual_token_budget = visual_token_budget;
++    args = g4;
++  }
++  auto inputs =
++      (*processor)->ToInputDataVector(rendered_prompt, messages, args);
++  if (!inputs.ok()) return litert::lm::c::ToCStatus(inputs.status());
++  auto status = session->session->RunPrefill(*inputs);
++  if (!status.ok()) return litert::lm::c::ToCStatus(status);
++  return kLiteRtLmStatusOk;
++}
++
++// [harness patch] Raw next-token logits from the most recent text-scoring
++// step (process-global; call right after litert_lm_session_run_text_scoring).
++// Writes logits[ids[i]] to out_logits[i]; optionally the full-vocab logsumexp,
++// the max logit and the vocab size.
++LITERT_LM_C_API_EXPORT
++LiteRtLmStatusCode litert_lm_experimental_get_last_scoring_logits(
++    const int* ids, size_t num_ids, float* out_logits, float* out_logsumexp,
++    float* out_max_logit, int* out_vocab_size) {
++  std::vector<float> row = litert::lm::HarnessGetLastScoringLogits();
++  if (row.empty()) {
++    return litert::lm::c::ReturnError(absl::StatusCode::kFailedPrecondition,
++                                      "No scoring logits captured yet.");
++  }
++  for (size_t i = 0; i < num_ids; ++i) {
++    if (ids[i] < 0 || ids[i] >= static_cast<int>(row.size())) {
++      return litert::lm::c::ReturnError(absl::StatusCode::kOutOfRange,
++                                        "Token id out of range.");
++    }
++    if (out_logits) out_logits[i] = row[ids[i]];
++  }
++  double m = row[0];
++  for (float v : row) m = v > m ? v : m;
++  if (out_logsumexp) {
++    double s = 0.0;
++    for (float v : row) s += std::exp(static_cast<double>(v) - m);
++    *out_logsumexp = static_cast<float>(m + std::log(s));
++  }
++  if (out_max_logit) *out_max_logit = static_cast<float>(m);
++  if (out_vocab_size) *out_vocab_size = static_cast<int>(row.size());
++  return kLiteRtLmStatusOk;
++}
++
+ }  // extern "C"
+diff --git a/runtime/components/scoring_cpu_util.cc b/runtime/components/scoring_cpu_util.cc
+index c7bca05..dd8c664 100644
+--- a/runtime/components/scoring_cpu_util.cc
++++ b/runtime/components/scoring_cpu_util.cc
+@@ -17,6 +17,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <iterator>
++#include <mutex>
+ #include <vector>
+ 
+ #include "absl/status/status.h"  // from @com_google_absl
+@@ -29,11 +30,25 @@
+ 
+ namespace litert::lm {
+ 
++namespace {
++std::mutex& HarnessMutex() { static std::mutex* m = new std::mutex(); return *m; }
++std::vector<float>& HarnessLogits() { static auto* v = new std::vector<float>(); return *v; }
++}  // namespace
++
++std::vector<float> HarnessGetLastScoringLogits() {
++  std::lock_guard<std::mutex> lock(HarnessMutex());
++  return HarnessLogits();
++}
++
+ absl::StatusOr<std::vector<float>> ComputeLogLikelihood(
+     absl::Span<const float> logits, absl::Span<const int> sampled_ids,
+     float temperature) {
+   const int batch_size = sampled_ids.size();
+   const int vocab_size = logits.size() / batch_size;
++  {
++    std::lock_guard<std::mutex> lock(HarnessMutex());
++    HarnessLogits().assign(logits.begin(), logits.begin() + vocab_size);
++  }
+   for (int i = 0; i < batch_size; ++i) {
+     if (sampled_ids[i] < 0 || sampled_ids[i] >= vocab_size) {
+       return absl::InvalidArgumentError(
+diff --git a/runtime/components/scoring_cpu_util.h b/runtime/components/scoring_cpu_util.h
+index b86c80b..35cf6a3 100644
+--- a/runtime/components/scoring_cpu_util.h
++++ b/runtime/components/scoring_cpu_util.h
+@@ -33,6 +33,10 @@ namespace litert::lm {
+ absl::StatusOr<std::vector<float>> ComputeLogLikelihood(
+     absl::Span<const float> logits, absl::Span<const int> sampled_ids,
+     float temperature);
++
++// [harness patch] Raw logits (batch row 0, full vocab) seen by the most recent
++// ComputeLogLikelihood call, i.e. the next-token logits at the scoring step.
++std::vector<float> HarnessGetLastScoringLogits();
+ }  // namespace litert::lm
+ 
+ #endif  // THIRD_PARTY_ODML_LITERT_LM_RUNTIME_COMPONENTS_SCORING_CPU_UTIL_H_
