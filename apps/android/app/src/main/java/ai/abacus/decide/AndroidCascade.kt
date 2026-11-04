@@ -98,7 +98,7 @@ object AndroidCascade {
                 manager: ModelManager = ModelManager(ctx), listener: PrepareListener? = null): Cascade {
         return Cascade(fast, bigFactory(ctx, tier = tier, manager = manager, listener = listener), tau, tier) { kind, loaded ->
             (if (BACKEND == "litert") manager.fileBlocker(kind) else if (!bigInstalled(ctx, manager)) "Smaug-Decisions not installed" else null)
-                ?: if (!DevicePolicy.canUseBig(tier, kind, memoryInfo(ctx).availMem, loaded)) "not enough free memory for Smaug-Decisions now" else null
+                ?: if (!DevicePolicy.canUseBig(tier, kind, memoryInfo(ctx).availMem, loaded)) "Not enough free memory for Smaug-Decisions right now. Close other apps and try again." else null
         }.also { it.choice = manager.choice }
     }
 

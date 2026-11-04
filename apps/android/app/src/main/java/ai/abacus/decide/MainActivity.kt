@@ -23,6 +23,7 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -395,16 +396,24 @@ fun AudioInput(ui: CascadeUiState) {
     GradientButton("Decide", enabled = !ui.busy && clip != null && audio.isNotEmpty()) {
         val s = audio[sel]; ui.decide(s.title, "audio", Cascade.Request.Audio(s, clip!!))
     }
+    DecideHint(if (clip == null && !recording) "Pick a question above, then record up to 10 s" else null)
 }
 
 @Composable
-fun Field(value: String, placeholder: String, onChange: (String) -> Unit, lines: Int = 1) {
-    Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(fieldFill).padding(horizontal = 14.dp, vertical = 12.dp)) {
-        if (value.isEmpty()) Line(placeholder, Type.body.copy(fontSize = 15.sp), secondaryText)
-        BasicTextField(value, onChange, textStyle = Type.body.copy(fontSize = 15.sp, color = MaterialTheme.colorScheme.onSurface), maxLines = lines,
-            singleLine = lines == 1, cursorBrush = SolidColor(Violet), modifier = Modifier.fillMaxWidth())
+fun Field(value: String, placeholder: String, onChange: (String) -> Unit, lines: Int = 1, label: String? = null) {
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        if (label != null) Line(label, Type.caption, secondaryText, Modifier.padding(start = 4.dp))
+        Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(fieldFill).padding(horizontal = 14.dp, vertical = 12.dp)) {
+            if (value.isEmpty()) Line(placeholder, Type.body.copy(fontSize = 15.sp), secondaryText)
+            BasicTextField(value, onChange, textStyle = Type.body.copy(fontSize = 15.sp, color = MaterialTheme.colorScheme.onSurface), maxLines = lines,
+                singleLine = lines == 1, cursorBrush = SolidColor(Violet), modifier = Modifier.fillMaxWidth())
+        }
     }
 }
+
+/** why Decide is off, under the button (null when it is on) */
+@Composable
+fun DecideHint(text: String?) { if (text != null) Line(text, Type.caption, secondaryText, Modifier.fillMaxWidth().padding(horizontal = 4.dp), maxLines = 2) }
 
 @Composable
 fun TypedInput(ui: CascadeUiState, image: Boolean) {
@@ -415,11 +424,19 @@ fun TypedInput(ui: CascadeUiState, image: Boolean) {
     var photo by remember { mutableStateOf<Uri?>(null) }
     val pick = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { photo = it }
     if (image) FieldRow("Photo", if (photo == null) "Choose a photo" else "Photo chosen") { pick.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }
-    else Field(text, "Text to decide about", { text = it }, lines = 4)
-    Field(question, "Question", { question = it }, lines = 2)
-    Field(options, "Options, comma-separated", { options = it })
+    else Field(text, "Paste or type the text", { text = it }, lines = 4, label = "Text")
+    Field(question, if (image) "e.g. Is there a person in the photo?" else "e.g. Is the customer angry?", { question = it }, lines = 2, label = "Question")
+    Field(options, "Yes, No", { options = it }, label = "Possible answers, separated by commas")
     val opts = options.split(",").map { it.trim() }.filter { it.isNotEmpty() }
-    GradientButton("Decide", enabled = !ui.busy && question.isNotEmpty() && opts.size in 2..Prompt.LETTERS.length && (if (image) photo != null else text.isNotEmpty())) {
+    val missing = when {
+        image && photo == null -> "Choose a photo"
+        !image && text.isBlank() -> "Add the text to decide about"
+        question.isBlank() -> "Type a question about the ${if (image) "photo" else "text"}"
+        opts.size < 2 -> "Give at least two answers, separated by commas (for example: Yes, No)"
+        opts.size > Prompt.LETTERS.length -> "At most ${Prompt.LETTERS.length} answers"
+        else -> null
+    }
+    GradientButton("Decide", enabled = !ui.busy && missing == null) {
         val kind = if (image) "image" else "text"
         val s = Scenario(JSONObject().put("id", "typed").put("kind", kind).put("title", question).put("question", question).put("options", JSONArray(opts)), 0)
         val req = if (image) {
@@ -428,6 +445,7 @@ fun TypedInput(ui: CascadeUiState, image: Boolean) {
         } else Cascade.Request.Text(s, text)
         ui.decide(question, kind, req)
     }
+    DecideHint(missing)
 }
 
 /** Built-in examples from the cascade self-test bundle (our own clips and texts, no benchmark items). */
@@ -484,7 +502,8 @@ fun ResultCard(o: Outcome, compact: Boolean) {
             Line(o.title, Type.caption, secondaryText, Modifier.weight(1f).padding(start = 4.dp))
         }
         Column {
-            Line(if (r.answered) r.top.first else r.note, if (compact) Type.subhead else Type.title3)
+            if (r.answered) Line(r.top.first, if (compact) Type.subhead else Type.title3)
+            else Line(r.note, Type.subhead, maxLines = 3)
             if (r.answered) Line("by " + when (r.route) { Cascade.Route.FAST -> "0.7B audio model"; Cascade.Route.FLAGGED, Cascade.Route.UNSURE -> "0.7B audio model (unsure)"; else -> "Smaug-Decisions" },
                 Type.caption, secondaryText)
         }
@@ -512,7 +531,7 @@ fun ResultCard(o: Outcome, compact: Boolean) {
             Line(if (details) "Details ▾" else "Details ›", Type.captionBold, Violet); Spacer1()
             Line("%.2f s".format((r.msFast + r.msBig) / 1000), Type.mono, secondaryText)
         }
-        if (details) Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        if (details) FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             if (r.fastP != null) StatChip("0.7B audio model", "%.0f ms".format(r.msFast), 168.dp)
             if (r.bigP != null) StatChip("Smaug-Decisions", "%.2f s".format(r.msBig / 1000), 156.dp)
             if (r.bigLoadMs > 0) StatChip("Load", "%.1f s".format(r.bigLoadMs / 1000))

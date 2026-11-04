@@ -134,10 +134,12 @@ enum class DeviceTier { FULL, STANDARD, SQUEEZE, FAST_ONLY }
  * clean working set should stay in page cache or every prefill re-reads it from flash.
  * totalMem sits below the marketed size (8 GB -> ~7.2-7.7 GiB, 6 GB -> ~5.5 GiB, 4 GB -> ~3.6 GiB):
  * - FULL >= 9.5 GiB (12 GB+): cascade; the vision encoder stays loaded after the first image.
- * - STANDARD 6.5-9.5 GiB (8 GB): cascade; the vision encoder is dropped after each image; Smaug-Decisions needs availMem >= [AVAIL_TEXT_AUDIO_MB]
- *   (text / audio) or >= [AVAIL_IMAGE_MB] (image) at that moment, else "would escalate".
- * - SQUEEZE 4.5-6.5 GiB (6 GB): same gates; expected to pass for text / audio on a lightly loaded phone, rarely for images.
- *   Unverified on a device.
+ * - STANDARD 6.5-9.5 GiB (8 GB): cascade; the vision encoder is dropped after each image. Smaug-Decisions needs availMem to cover what
+ *   the decision adds on top of what is already loaded: [AVAIL_TEXT_AUDIO_MB] to load it for text / audio, [AVAIL_IMAGE_LOADED_MB] /
+ *   [AVAIL_IMAGE_COLD_MB] for an image with it loaded / not loaded.
+ * - SQUEEZE 4.5-6.5 GiB (6 GB): the same, with [SQUEEZE_EXTRA_MB] more for images.
+ * availMem is a floor, not a ceiling: it leaves out cached background apps, which lmkd kills for the foreground app. The first
+ * gates (2.0 GB text / audio, 3.5 GB image on top of a loaded engine) refused every image on an 8 GB phone (2026-11-04).
  * - FAST_ONLY < 4.5 GiB (4 GB): fast tier only (the ~3.3 GB Smaug-Decisions working set does not fit next to the OS).
  */
 object DevicePolicy {
@@ -148,11 +150,15 @@ object DevicePolicy {
     const val BIG_DIRTY_TEXT_AUDIO_MB = 830L // Smaug-Decisions LiteRT, text 791 / audio 827 MB (JVM, engine without vision)
     const val BIG_DIRTY_IMAGE_MB = 2650L     // Smaug-Decisions LiteRT with the vision encoder after images (JVM, without heap purge)
     const val BIG_CLEAN_WORKING_SET_MB = 2650L
-    /** free memory needed to start a text / audio Smaug-Decisions decision: its dirty memory + 1.2 GB headroom for its clean working set
-     *  to stay mostly cached (the kernel can drop the rest and re-read it) */
-    const val AVAIL_TEXT_AUDIO_MB = 2000L
-    /** free memory needed for an image decision: the vision encoder's extra dirty memory + headroom */
-    const val AVAIL_IMAGE_MB = 3500L
+    /** free memory needed to load Smaug-Decisions for a text / audio decision: its dirty memory + headroom (the clean working set is
+     *  file-backed, the kernel can drop and re-read it) */
+    const val AVAIL_TEXT_AUDIO_MB = 1200L
+    /** free memory needed for an image decision with Smaug-Decisions loaded: the vision encoder's extra dirty memory (~1.8 GB) less what
+     *  lmkd frees from cached apps */
+    const val AVAIL_IMAGE_LOADED_MB = 1500L
+    /** the same with Smaug-Decisions not loaded yet */
+    const val AVAIL_IMAGE_COLD_MB = 2300L
+    const val SQUEEZE_EXTRA_MB = 500L
 
     fun tier(totalMemBytes: Long): DeviceTier {
         val gib = totalMemBytes / (1024.0 * 1024 * 1024)
@@ -170,7 +176,8 @@ object DevicePolicy {
         return when (tier) {
             DeviceTier.FULL -> true
             DeviceTier.FAST_ONLY -> false
-            else -> if (kind == "image") availMb >= AVAIL_IMAGE_MB else bigLoaded || availMb >= AVAIL_TEXT_AUDIO_MB
+            else -> if (kind == "image") availMb >= (if (bigLoaded) AVAIL_IMAGE_LOADED_MB else AVAIL_IMAGE_COLD_MB) + (if (tier == DeviceTier.SQUEEZE) SQUEEZE_EXTRA_MB else 0)
+                    else bigLoaded || availMb >= AVAIL_TEXT_AUDIO_MB
         }
     }
 

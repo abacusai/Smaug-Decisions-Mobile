@@ -66,9 +66,11 @@ class FastFrontEndTest {
         assertEquals(DeviceTier.FULL, DevicePolicy.tier((11.2 * gib).toLong()))       // 12 GB phone
         assertEquals(DeviceTier.FULL, DevicePolicy.tier((15.0 * gib).toLong()))       // 16 GB phone
         assertTrue(DevicePolicy.canUseBig(DeviceTier.STANDARD, "audio", 2500 * mb, false))
-        assertTrue(!DevicePolicy.canUseBig(DeviceTier.STANDARD, "audio", 1500 * mb, false))
-        assertTrue(DevicePolicy.canUseBig(DeviceTier.STANDARD, "audio", 1500 * mb, true))
-        assertTrue(!DevicePolicy.canUseBig(DeviceTier.SQUEEZE, "image", 3000 * mb, true))
+        assertTrue(!DevicePolicy.canUseBig(DeviceTier.STANDARD, "audio", 1000 * mb, false))
+        assertTrue(DevicePolicy.canUseBig(DeviceTier.STANDARD, "audio", 1000 * mb, true))
+        assertTrue(DevicePolicy.canUseBig(DeviceTier.STANDARD, "image", 1600 * mb, true))     // the 8 GB phone that refused every image
+        assertTrue(!DevicePolicy.canUseBig(DeviceTier.STANDARD, "image", 1600 * mb, false))
+        assertTrue(!DevicePolicy.canUseBig(DeviceTier.SQUEEZE, "image", 1800 * mb, true))
         assertTrue(DevicePolicy.canUseBig(DeviceTier.FULL, "image", 500 * mb, false))
         assertTrue(!DevicePolicy.canUseBig(DeviceTier.FAST_ONLY, "text", 16 * gib, false))
         assertTrue(DevicePolicy.keepVision(DeviceTier.FULL) && !DevicePolicy.keepVision(DeviceTier.STANDARD))

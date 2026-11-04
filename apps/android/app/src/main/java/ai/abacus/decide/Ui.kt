@@ -20,9 +20,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -64,7 +66,9 @@ private val DarkColors = darkColorScheme(primary = Violet, secondary = Color(0xF
 
 @Composable
 fun CascadeTheme(dark: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = if (dark) DarkColors else LightColors, content = content)
+    val scheme = if (dark) DarkColors else LightColors
+    // Text with no colour of its own takes LocalContentColor, which is black unless a Surface sets it: set it for the whole app
+    MaterialTheme(colorScheme = scheme) { CompositionLocalProvider(LocalContentColor provides scheme.onBackground, content = content) }
 }
 
 object Type {
@@ -132,7 +136,7 @@ fun Badge(glyph: String, solid: Boolean = false, size: Dp = 36.dp, tint: Color =
 @Composable
 fun GradientButton(title: String, enabled: Boolean = true, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Box(modifier.fillMaxWidth().height(50.dp).clip(CircleShape)
-        .background(Brush.horizontalGradient(listOf(Violet, VioletEnd))).alpha(if (enabled) 1f else 0.5f)
+        .alpha(if (enabled) 1f else 0.4f).background(Brush.horizontalGradient(listOf(Violet, VioletEnd)))
         .clickable(enabled = enabled, onClick = onClick), contentAlignment = Alignment.Center) {
         Line(title, Type.subhead.copy(fontSize = 16.sp), Color.White)
     }
