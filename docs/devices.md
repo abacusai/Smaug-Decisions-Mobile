@@ -11,7 +11,7 @@ loaded and its weight cache built, unless the row says otherwise.
 | iPhones with 8 GB or more | Core ML | LiteRT-LM GPU, `smaug-decisions-full-vis560` | full cascade | estimated |
 | iPhones under 6 GB | Core ML | does not fit | 0.7B audio model only | estimated |
 | Android, 12 GB or more | ONNX Runtime | LiteRT-LM, vision encoder kept after the first image | full cascade | estimated (verified off-device) |
-| Android, 8 GB | ONNX Runtime | LiteRT-LM when 2.0 GB (text, audio) or 3.5 GB (image) is free | full cascade | estimated (verified off-device) |
+| Android, 8 GB | ONNX Runtime | LiteRT-LM when 1.2 GB (text, audio) or 1.5 GB (image, 2.3 GB if Smaug-Decisions is not loaded yet) is free | full cascade | estimated (verified off-device) |
 | Android, 6 GB | ONNX Runtime | same gates as 8 GB | usually text and audio, rarely images | expected |
 | Android, 4 GB | ONNX Runtime | does not fit | 0.7B audio model only | estimated |
 | Mac, Apple Silicon | Core ML: 121 ms (M3 Pro GPU); PyTorch MPS | PyTorch MPS (about 16 GB), MLX, llama.cpp | Python | Core ML measured |
@@ -114,7 +114,7 @@ cache of about 2 GB on its first load.
 | Tier | RAM | Policy |
 |---|---|---|
 | Full | 12 GB+ | cascade; vision encoder kept after the first image |
-| Standard | 8 GB | cascade; Smaug-Decisions only when 2.0 GB (text, audio) or 3.5 GB (image) is free at that moment, else the audio model answer is flagged |
+| Standard | 8 GB | cascade; Smaug-Decisions only when 1.2 GB (text, audio) or 1.5 GB (image, 2.3 GB if Smaug-Decisions is not loaded yet) is free at that moment, else the audio model answer is flagged |
 | Squeeze | 6 GB | same gates; expected to pass for text and audio on a lightly loaded phone |
 | Fast only | 4 GB | 0.7B audio model only |
 

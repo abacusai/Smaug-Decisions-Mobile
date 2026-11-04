@@ -25,7 +25,7 @@ rendered exactly as `smaug_decide/prompt.py` does, with a budget of about 2,000 
 | Tier | RAM (`totalMem`) | Smaug-Decisions file | What runs |
 |---|---|---|---|
 | Full | 12 GB+ | `smaug-decisions-full-vis560` | cascade; vision encoder kept after the first image |
-| Standard | 8 GB | `smaug-decisions-full-vis560` | cascade; Smaug-Decisions loads when 2.0 GB (text, audio) or 3.5 GB (image) is free at that moment, else the audio model's answer is flagged; vision encoder dropped after each image |
+| Standard | 8 GB | `smaug-decisions-full-vis560` | cascade; Smaug-Decisions loads when 1.2 GB (text, audio) or 1.5 GB (image, 2.3 GB if Smaug-Decisions is not loaded yet) is free at that moment, else the audio model's answer is flagged; vision encoder dropped after each image |
 | Squeeze | 6 GB | `smaug-decisions-full-vis280` | same gates as Standard |
 | Fast only | 4 GB | none | 0.7B audio model only: unsure audio is flagged, text and images need Smaug-Decisions |
 
